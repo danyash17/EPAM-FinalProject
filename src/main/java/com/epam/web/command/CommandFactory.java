@@ -6,11 +6,11 @@ public class CommandFactory {
     public Command create(String commandType) {
         switch (commandType) {
             case "mainPage":
-                return new ShowPageCommand("/WEB-INF/main.jsp");
+                return new ShowPageCommand("/view/main.jsp");
             case "login":
                 return new LoginCommand(new UserService());
             case "error-login":
-                return new ShowPageCommand("/WEB-INF/error-login.jsp");
+                return new ShowPageCommand("/view/error.jsp");
             default:
                 throw new IllegalArgumentException("Unknown command type " + commandType);
         }

@@ -39,7 +39,7 @@ public class Controller extends HttpServlet {
         }
         catch (Exception e){
             request.setAttribute("errorMessage",e.getMessage());
-            page="/error-login.jsp";
+            page="/error.jsp";
         }
         if(!isRedirect){
             forward(request,response,page);

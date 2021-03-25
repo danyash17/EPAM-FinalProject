@@ -10,7 +10,7 @@ public class CommandFactory {
             case "login":
                 return new LoginCommand(new UserService());
             case "error-login":
-                return new ShowPageCommand("/view/error.jsp");
+                return new ShowPageCommand("/index.jsp");
             default:
                 throw new IllegalArgumentException("Unknown command type " + commandType);
         }

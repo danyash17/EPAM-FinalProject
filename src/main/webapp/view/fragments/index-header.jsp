@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
 <body>
 <div class="header">

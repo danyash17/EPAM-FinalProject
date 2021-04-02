@@ -1,6 +1,7 @@
 package com.epam.web.command;
 
 import com.epam.web.entity.User;
+import com.epam.web.service.ServiceException;
 import com.epam.web.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +16,13 @@ public class LoginCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Optional<User> user = userService.login(username, password);
         if (user.isPresent()) {
             User presentUser = user.get();
-            request.setAttribute("name", presentUser.getName());
+            request.setAttribute("name", presentUser.getUsername());
             return CommandResult.forward("/controller?command=mainPage");
         } else {
             request.setAttribute("errorMessage", "Login or password is incorrect");

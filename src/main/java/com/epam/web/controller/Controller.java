@@ -2,6 +2,7 @@ package com.epam.web.controller;
 import com.epam.web.command.Command;
 import com.epam.web.command.CommandFactory;
 import com.epam.web.command.CommandResult;
+import com.epam.web.service.ServiceException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,9 +38,9 @@ public class Controller extends HttpServlet {
         page=result.getPage();
         isRedirect=result.isRedirect();
         }
-        catch (Exception e){
-            request.setAttribute("errorMessage",e.getMessage());
-            page="/error.jsp";
+        catch (Exception | ServiceException e){
+            request.setAttribute("errorMessage","Something went wrong");
+            page="/index.jsp";
         }
         if(!isRedirect){
             forward(request,response,page);

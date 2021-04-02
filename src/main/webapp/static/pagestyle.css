@@ -34,24 +34,110 @@ input{
     text-align: center;
 }
 /*top-nav.jsp*/
-.topnav {
-    background-color: #333;
+.top {
+    background-color: #63acb5;
     overflow: hidden;
 }
-.topnav a {
-    float: left;
+.top a {
+    font-family: AG_Futura;
+    float: right;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 19px 16px;
     text-decoration: none;
     font-size: 17px;
 }
-.topnav a:hover {
+.top a:hover {
+    font-family: AG_Futura;
     background-color: #ddd;
-    color: black;
+    color: #63acb5;
 }
-.topnav a.active {
+.top a.active {
+    float: right;
+    font-family: AG_Futura;
     background-color: #4CAF50;
     color: white;
 }
 /*main.jsp*/
+.main-hello{
+    font-family: AG_Futura;
+    margin: 12px;
+    font-size: 24px;
+    float: left;
+    color: white;
+}
+.main-body{
+    background-color:#77ced9;
+}
+* {
+    box-sizing: border-box;
+}
+
+.col-3 {
+    height: 400px;
+    width: 30.333%;
+    background: white;
+    margin: 1.5rem;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+.main-faculties{
+    margin: 30px;
+    width: 100%;
+    font-size: 40px;
+    font-family: AG_Futura;
+    text-align: center;
+}
+.main-threefacs{
+    margin: 35px;
+    width: 95%;
+    font-size: 40px;
+    font-family: AG_Futura;
+    text-align: center;
+}
+.dev-ref{float: right;
+background-color:#63acb5;
+    color: #f2f2f2}
+.dev-ref:hover{
+    color: white;
+}
+.qa-ref{background-color:#63acb5;
+    color: #f2f2f2}
+.qa-ref:hover{
+    color: white;
+}
+.smm-ref{float: left;
+    background-color:#63acb5;
+    color: #f2f2f2}
+.smm-ref:hover{
+    color: white;
+}
+.dev-image{
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.qa-image{
+    margin: 10px;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.smm-image{
+    margin: 10px;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

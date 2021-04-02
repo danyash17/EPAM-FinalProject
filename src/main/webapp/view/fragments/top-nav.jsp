@@ -10,7 +10,7 @@
 <head>
     <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
-<div class="topnav">
+<div class="top">
     <a class="active" href="#home">Home</a>
     <a href="#news">News</a>
     <a href="#contact">Contact</a>

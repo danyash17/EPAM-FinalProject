@@ -11,9 +11,8 @@
     <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
 <div class="top">
-    <a class="active" href="#home">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
+    <a href="${pageContext.request.contextPath}/controller?command=logout">Logout</a>
+    <a href="${pageContext.request.contextPath}/controller?command=aboutPage">About</a>
+    <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage" >Home</a>
 </div>
 </html>

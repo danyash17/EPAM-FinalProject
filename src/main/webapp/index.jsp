@@ -24,7 +24,7 @@
             <input type="password" name="password">
         </label>
         <br>
-        <input type="submit" value="Login">
+        <input class="button" type="submit" value="Login">
     </form>
     </div>
 </div>

@@ -21,6 +21,22 @@ input{
     margin: 10px;
     padding: 5px;
 }
+input[type=text], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=password], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
 .header{
     width: 100%;
     background-color: #63acb5;
@@ -33,6 +49,25 @@ input{
     font-family: AG_Futura;
     text-align: center;
 }
+.button {
+    font-family: AG_Futura;
+    background-color: #2ea832;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.button:hover {opacity: 1}
+
 /*top-nav.jsp*/
 .top {
     background-color: #63acb5;
@@ -55,7 +90,7 @@ input{
 .top a.active {
     float: right;
     font-family: AG_Futura;
-    background-color: #4CAF50;
+    background-color: #2ea832;
     color: white;
 }
 /*main.jsp*/
@@ -66,8 +101,10 @@ input{
     float: left;
     color: white;
 }
-.main-body{
-    background-color:#77ced9;
+.common-body{
+    height: auto;
+    width: auto;
+    background-color: #77ced9;
 }
 * {
     box-sizing: border-box;
@@ -75,9 +112,10 @@ input{
 
 .col-3 {
     height: 400px;
-    width: 30.333%;
+    width: 33.333%;
+    margin: 0.5rem;
     background: white;
-    margin: 1.5rem;
+    border-style: solid;
 }
 
 .row {
@@ -89,34 +127,16 @@ input{
 }
 .main-faculties{
     margin: 30px;
-    width: 100%;
     font-size: 40px;
     font-family: AG_Futura;
     text-align: center;
 }
 .main-threefacs{
-    margin: 35px;
-    width: 95%;
-    font-size: 40px;
-    font-family: AG_Futura;
-    text-align: center;
-}
-.dev-ref{float: right;
-background-color:#63acb5;
-    color: #f2f2f2}
-.dev-ref:hover{
-    color: white;
-}
-.qa-ref{background-color:#63acb5;
-    color: #f2f2f2}
-.qa-ref:hover{
-    color: white;
-}
-.smm-ref{float: left;
-    background-color:#63acb5;
-    color: #f2f2f2}
-.smm-ref:hover{
-    color: white;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
 }
 .dev-image{
     height: 100%;
@@ -141,3 +161,33 @@ background-color:#63acb5;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/*spec*/
+.spec-header{
+    font-size: 42px;
+    font-family: AG_Futura;
+    color: white;
+}
+.spec-description{
+    font-size: 30px;
+    font-family: AG_Futura;
+}
+.spec-row{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.spec-column{
+    font-size: 30px;
+    font-family: AG_Futura;
+    color: white;
+    text-align: center;
+}
+.spec-description{
+    text-align: center;
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+
+}
+
+

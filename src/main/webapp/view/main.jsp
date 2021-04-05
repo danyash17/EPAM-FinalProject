@@ -6,33 +6,45 @@
  <title>EPAM Faculties</title>
  <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
-<%--<jsp:include page="fragments/top-nav.jsp"/>--%>
-<body class="main-body">
+<body class="common-body">
 <div class="top">
  <div class="main-hello">Hello,${name}</div>
- <a href="#contact">Contact</a>
- <a href="#about">About</a>
- <a class="active" href="#home">Home</a>
+ <a href="${pageContext.request.contextPath}/controller?command=logout">Logout</a>
+ <a href="${pageContext.request.contextPath}/controller?command=aboutPage">About</a>
+ <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage">Home</a>
 </div>
 <div class="main-faculties">EPAM Faculties</div>
+
 <div class="main-threefacs">
- <a class="dev-ref" href="#development">Development faculty</a>
- <a class="qa-ref" href="#qa">QA faculty</a>
- <a class="smm-ref" href="#smm">SMM faculty</a>
-</div>
+ <form class="main-dev-form" action="${pageContext.request.contextPath}/controller">
+  <input type="hidden" name="command" value="devPage">
+  <button class="button">Dev faculty</button>
+ </form>
+ <form class="main-qa-form" action="${pageContext.request.contextPath}/controller">
+  <input type="hidden" name="command" value="qaPage">
+  <button class="button">QA faculty</button>
+ </form>
+ <form class="main-smm-form" action="${pageContext.request.contextPath}/controller" >
+  <input type="hidden" name="command" value="smmPage">
+  <button class="button">SMM faculty</button>
+ </form>
+ </div>
+
 <div class="row">
- <div class="col-3">
+ <a class="col-3" href="${pageContext.request.contextPath}/controller?command=devPage">
   <div class="dev-image"><img src="../images/dev.png" height="325"
                             alt="dev"></div>
- </div>
- <div class="col-3">
-  <div class="qa-image"><img src="../images/testing.png" height="300"
-                              alt="dev"></div>
- </div>
- <div class="col-3">
+ </a>
+
+ <a class="col-3" href="${pageContext.request.contextPath}/controller?command=qaPage">
+  <div class="qa-image"><img src="../images/qa.png" height="300"
+                             alt="qa"></div>
+ </a>
+
+ <a class="col-3" href="${pageContext.request.contextPath}/controller?command=smmPage">
   <div class="smm-image"><img src="../images/smm.png" height="300"
-                             alt="dev"></div>
- </div>
+                             alt="smm"></div>
+ </a>
 </div>
 </body>
 </html>

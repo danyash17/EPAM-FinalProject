@@ -13,6 +13,7 @@
 <div class="top">
     <a href="${pageContext.request.contextPath}/controller?command=logout">Logout</a>
     <a href="${pageContext.request.contextPath}/controller?command=aboutPage">About</a>
+    <a href="${pageContext.request.contextPath}/controller?command=accountData">Account</a>
     <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage" >Home</a>
 </div>
 </html>

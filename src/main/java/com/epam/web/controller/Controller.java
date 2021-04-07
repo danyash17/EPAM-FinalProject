@@ -40,7 +40,7 @@ public class Controller extends HttpServlet {
         }
         catch (Exception | ServiceException e){
             request.setAttribute("errorMessage","Something went wrong");
-            page="/index.jsp";
+            page="/view/error.jsp";
         }
         if(!isRedirect){
             forward(request,response,page);

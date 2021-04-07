@@ -16,7 +16,7 @@
 <div class="spec-header" align="center">
     Final EPAM project<br> for Java Web Training
 </div>
-<div class="spec-description">
+<div class="spec-column">
     Made by Daniil Shkabara
     <br>
     Minsk,2021

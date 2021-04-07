@@ -1,6 +1,7 @@
 package com.epam.web.command;
 
 import com.epam.web.dao.DaoHelperFactory;
+import com.epam.web.service.QueryService;
 import com.epam.web.service.UserService;
 
 public class CommandFactory {
@@ -16,6 +17,12 @@ public class CommandFactory {
                 return new ShowPageCommand("/view/smm.jsp");
             case "aboutPage":
                 return new ShowPageCommand("/view/about.jsp");
+            case "accountPage":
+                return new ShowPageCommand("/view/account.jsp");
+            case "errorPage":
+                return new ShowPageCommand("/view/error.jsp");
+            case "accountData":
+                return new ShowAccountDataCommand(new QueryService(new DaoHelperFactory()));
             case "loginPage":
                 return new ShowPageCommand("/index.jsp");
             case "login":

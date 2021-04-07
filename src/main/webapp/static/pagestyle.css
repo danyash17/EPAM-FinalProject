@@ -187,7 +187,24 @@ input[type=password], select {
     font-size: 19px;
     font-family: AG_Futura;
     color: black;
-
 }
-
+.account-info-query{
+    text-align: left;
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+    width: 50%;
+}
+.account-info-grades{
+    text-align: right;
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+    width: 50%;
+}
+.account-row{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
 

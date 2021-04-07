@@ -39,7 +39,7 @@ public class UserDaoImplement extends AbstractDao<Integer,User> implements UserD
     public Optional<User> findUserByLoginAndPassword(String login, String password) throws DaoException {
         return executeSingleResultQuery(SQL_SELECT_USER_BY_LOGIN_AND_PASSWORD,login,password);
     }
-    public Optional<User> findUserByID(Integer id) throws DaoException {
+    public Optional<User> findUserByID(int id) throws DaoException {
         return executeSingleResultQuery(SQL_SELECT_USER_BY_ID,id);
     }
 }

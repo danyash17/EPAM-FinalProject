@@ -22,6 +22,9 @@ public class DaoHelper implements AutoCloseable {
     public void beginTransaction() throws SQLException {
         connection.setAutoCommit(false);
     }
+    public QueryDaoImplement createQueryDao() {
+        return new QueryDaoImplement(connection);
+    }
 
     public void endTransaction() throws SQLException {
         connection.commit();
@@ -35,4 +38,6 @@ public class DaoHelper implements AutoCloseable {
     public void rollback() throws SQLException {
         connection.rollback();
     }
+
+
 }

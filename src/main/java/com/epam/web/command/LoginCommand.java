@@ -22,7 +22,10 @@ public class LoginCommand implements Command {
         Optional<User> user = userService.login(username, password);
         if (user.isPresent()) {
             User presentUser = user.get();
+            request.getSession().setAttribute("id", presentUser.getId());
             request.getSession().setAttribute("name", presentUser.getUsername());
+            request.getSession().setAttribute("surname", presentUser.getSurname());
+            request.getSession().setAttribute("role", presentUser.getRole());
             return CommandResult.forward("/controller?command=mainPage");
         } else {
             request.getSession().setAttribute("errorMessage", "Login or password is incorrect");

@@ -207,4 +207,42 @@ input[type=password], select {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
 }
-
+.rolling-text{
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+.rolling-text span{
+    text-transform: uppercase;
+    display: block;
+}
+.textUpper{
+    background-color:#77ced9;
+    font-size: 23px;
+    font-family: AG_Futura;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    position: relative;
+    animation: text 3s 1;
+    color: white;
+}
+.textDown{
+    font-size: 14px;
+    font-family: AG_Futura;
+    color: black;
+}
+@keyframes text {
+    0%{
+        margin-bottom: -20px;
+    }
+    30%{
+        letter-spacing: 12px;
+        margin-bottom: -20px;
+    }
+    85%{
+        letter-spacing: 3px;
+        margin-bottom: -20px;
+    }
+}

@@ -3,24 +3,26 @@ package com.epam.web.entity;
 import java.util.Date;
 
 public class Query implements Entity{
-    private Integer id;
-    private String city;
-    private Date birthday;
-    private String school;
-    private boolean medal;
-    private Integer specializationId;
-    private Integer firstExam;
-    private Integer secondExam;
-    private Integer thirdExam;
-    private Integer grade;
+    private final Integer id;
+    private final String city;
+    private final Date birthday;
+    private final String school;
+    private final boolean medal;
+    private final Integer specializationId;
+    private final Integer firstExam;
+    private final Integer secondExam;
+    private final Integer thirdExam;
+    private final Integer grade;
+    private final String specialization;
 
-    public Query(int id, String city, Date birthday, String school, boolean medal, Integer specializationId, int firstExam, int secondExam, int thirdExam, int grade) {
+    public Query(int id, String city, Date birthday, String school, boolean medal, Integer specializationId,String specialization, int firstExam, int secondExam, int thirdExam, int grade) {
         this.id = id;
         this.city = city;
         this.birthday = birthday;
         this.school = school;
         this.medal = medal;
         this.specializationId = specializationId;
+        this.specialization=specialization;
         this.firstExam = firstExam;
         this.secondExam = secondExam;
         this.thirdExam = thirdExam;
@@ -66,5 +68,9 @@ public class Query implements Entity{
 
     public int getGrade() {
         return grade;
+    }
+
+    public String getSpecialization() {
+        return specialization;
     }
 }

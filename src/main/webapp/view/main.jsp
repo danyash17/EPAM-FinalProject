@@ -5,6 +5,7 @@
 <head>
  <title>EPAM Faculties</title>
  <link rel="stylesheet" href="../../static/pagestyle.css">
+ <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="common-body">
 <div class="top">

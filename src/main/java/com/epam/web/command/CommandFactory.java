@@ -25,6 +25,24 @@ public class CommandFactory {
                 return new ShowAccountDataCommand(new QueryService(new DaoHelperFactory()));
             case "loginPage":
                 return new ShowPageCommand("/index.jsp");
+            case "registerJava":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),1,"Java");
+            case "registerC":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),2,"C++");
+            case "registerPython":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),3,"Python");
+            case "registerAllure":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),4,"Allure");
+            case "registerJUnit":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),5,"JUnit");
+            case "registerSelenium":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),6,"Selenium");
+            case "registerSEO":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),7,"SEO");
+            case "registerAdv":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),8,"Adversiting");
+            case "registerSoft":
+                return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),9,"Soft skills");
             case "login":
                 return new LoginCommand(new UserService(new DaoHelperFactory()));
             case "logout":

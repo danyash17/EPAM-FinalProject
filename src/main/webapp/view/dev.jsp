@@ -5,10 +5,12 @@
   Time: 00:03
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Dev faculty</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <jsp:include page="fragments/top-nav.jsp"/>
 <body class="common-body">
@@ -26,30 +28,54 @@
         <p class="spec-description">
             Universal and Popular
         </p>
+<c:if test="${role=='ENROLEE'}">
         <form action="${pageContext.request.contextPath}/controller" >
-            <input type="hidden" name="command" value="registerJava">
+            <input type="hidden" name="command" value="registerJava" id="btnJava">
             <button class="button">Register</button>
         </form>
+</c:if>
+        <c:if test="${role=='ADMIN'}">
+            <form action="${pageContext.request.contextPath}/controller" >
+                <input type="hidden" name="command" value="reportJava" >
+                <button class="button">Get Java Report</button>
+            </form>
+        </c:if>
     </div>
     <div class="spec-column">
         <b>C++</b>
         <p class="spec-description">
             Powerful and Fast
         </p>
+    <c:if test="${role=='ENROLEE'}">
         <form action="${pageContext.request.contextPath}/controller" >
-            <input type="hidden" name="command" value="registerC">
+            <input type="hidden" name="command" value="registerC" id="btnC">
             <button class="button">Register</button>
         </form>
+    </c:if>
+<c:if test="${role=='ADMIN'}">
+    <form action="${pageContext.request.contextPath}/controller" >
+        <input type="hidden" name="command" value="reportC">
+        <button class="button">Get C++ Report</button>
+    </form>
+</c:if>
     </div>
     <div class="spec-column">
         <b>PYTHON</b>
         <p class="spec-description">
             Simple and Popular
         </p>
+        <c:if test="${role=='ENROLEE'}">
         <form action="${pageContext.request.contextPath}/controller" >
-            <input type="hidden" name="command" value="registerPython">
+            <input type="hidden" name="command" value="registerPython" id="btnPython">
             <button class="button">Register</button>
         </form>
+        </c:if>
+        <c:if test="${role=='ADMIN'}">
+            <form action="${pageContext.request.contextPath}/controller" >
+                <input type="hidden" name="command" value="reportPython">
+                <button class="button">Get Python Report</button>
+            </form>
+        </c:if>
     </div>
 </div>
 </body>

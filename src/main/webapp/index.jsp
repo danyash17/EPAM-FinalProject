@@ -4,6 +4,7 @@
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/pagestyle.css">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="index-body">
 <jsp:include page="view/fragments/index-header.jsp"/>
@@ -17,11 +18,11 @@
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="login">
         <label>
-            <input type="text" name="username">
+            <input type="text" name="username" placeholder="login">
         </label>
         <br>
         <label>
-            <input type="password" name="password">
+            <input type="password" name="password" placeholder="password">
         </label>
         <br>
         <input class="button" type="submit" value="Login">

@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>QA faculty</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <jsp:include page="fragments/top-nav.jsp"/>
 <body class="common-body">

@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>Error</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 <div style="color:#FF0000;">

@@ -15,10 +15,11 @@ public class QueryMapper implements Mapper {
         String school=resultSet.getString("school");
         boolean medal=resultSet.getBoolean("medal");
         int specializationId=resultSet.getInt("specialization_id");
+        String specialization=resultSet.getString("specialization");
         int firstExam=resultSet.getInt("first_exam");
         int secondExam=resultSet.getInt("second_exam");
         int thirdExam=resultSet.getInt("third_exam");
         int grade=resultSet.getInt("grade");
-        return new Query(query_id,city,birthday,school,medal,specializationId,firstExam,secondExam,thirdExam,grade);
+        return new Query(query_id,city,birthday,school,medal,specializationId,specialization,firstExam,secondExam,thirdExam,grade);
     }
 }

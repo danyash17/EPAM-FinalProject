@@ -2,7 +2,6 @@ package com.epam.web.service;
 
 import com.epam.web.dao.*;
 import com.epam.web.entity.Query;
-import com.epam.web.entity.User;
 
 import java.util.Optional;
 
@@ -17,6 +16,16 @@ public class QueryService {
         try(DaoHelper daoHelper=factory.create()){
             QueryDaoImplement dao=daoHelper.createQueryDao();
             return dao.getFullQueryInfoById(id);
+        }
+        catch (DaoException e){
+            throw new ServiceException(e,e.getMessage());
+        }
+    }
+
+    public void updateSpecialization(Integer id, Integer specializationId) throws Exception, ServiceException {
+        try(DaoHelper daoHelper=factory.create()){
+            QueryDaoImplement dao=daoHelper.createQueryDao();
+            dao.updateSpecializationColumnById(id,specializationId);
         }
         catch (DaoException e){
             throw new ServiceException(e,e.getMessage());

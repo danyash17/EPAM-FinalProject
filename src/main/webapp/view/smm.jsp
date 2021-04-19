@@ -72,7 +72,7 @@
 </c:if>
         <c:if test="${role=='ADMIN'}">
             <form action="${pageContext.request.contextPath}/controller" >
-                <input type="hidden" name="command" value="reportSEO">
+                <input type="hidden" name="command" value="reportSoft">
                 <button class="button">Get SS report</button>
             </form>
         </c:if>

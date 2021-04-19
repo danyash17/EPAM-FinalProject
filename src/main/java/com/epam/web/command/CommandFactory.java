@@ -2,6 +2,8 @@ package com.epam.web.command;
 
 import com.epam.web.dao.DaoHelperFactory;
 import com.epam.web.service.QueryService;
+import com.epam.web.service.ReportService;
+import com.epam.web.service.SpecializationService;
 import com.epam.web.service.UserService;
 
 public class CommandFactory {
@@ -23,6 +25,8 @@ public class CommandFactory {
                 return new ShowPageCommand("/view/error.jsp");
             case "accountData":
                 return new ShowAccountDataCommand(new QueryService(new DaoHelperFactory()));
+            case "reportPage":
+                return new ShowPageCommand("/view/report.jsp");
             case "loginPage":
                 return new ShowPageCommand("/index.jsp");
             case "registerJava":
@@ -43,6 +47,24 @@ public class CommandFactory {
                 return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),8,"Adversiting");
             case "registerSoft":
                 return new UpdateSpecializationCommand(new QueryService(new DaoHelperFactory()),9,"Soft skills");
+            case "reportJava":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),1);
+            case "reportC":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),2);
+            case "reportPython":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),3);
+            case "reportAllure":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),4);
+            case "reportJUnit":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),5);
+            case "reportSelenium":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),6);
+            case "reportSEO":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),7);
+            case "reportAdv":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),8);
+            case "reportSoft":
+                return new FormSpecializationReportCommand(new ReportService(),new QueryService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()),9);
             case "login":
                 return new LoginCommand(new UserService(new DaoHelperFactory()));
             case "logout":

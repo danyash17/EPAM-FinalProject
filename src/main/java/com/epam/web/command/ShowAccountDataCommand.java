@@ -20,6 +20,7 @@ public class ShowAccountDataCommand implements Command {
         Optional<Query> query = queryService.getQuery(id);
         if (query.isPresent()) {
             Query presentQuery = query.get();
+            request.getSession().setAttribute("country", presentQuery.getCountry());
             request.getSession().setAttribute("city", presentQuery.getCity());
             request.getSession().setAttribute("birthday", presentQuery.getBirthday());
             request.getSession().setAttribute("school", presentQuery.getSchool());

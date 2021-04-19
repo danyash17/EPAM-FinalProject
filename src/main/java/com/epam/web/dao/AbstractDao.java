@@ -13,8 +13,8 @@ import java.util.Optional;
 
 public abstract class AbstractDao<K extends Number, T extends Entity> implements Dao {
 
-    private static final String FIND_BY_ID = "SELECT * FROM %s WHERE query_id = ?";
-    private static final String FIND_ALL = "SELECT * FROM %s";
+    private static final String SELECT_BY_ID = "SELECT * FROM %s WHERE query_id = ?";
+    private static final String SELECT_ALL = "SELECT * FROM %s";
     private static final String DELETE = "DELETE FROM %s WHERE query_id = ?";
 
     private final ProxyConnection connection;
@@ -81,13 +81,13 @@ public abstract class AbstractDao<K extends Number, T extends Entity> implements
 
     @Override
     public Optional<T> findById(Number id) throws DaoException {
-        String query = String.format(FIND_BY_ID, tableName);
+        String query = String.format(SELECT_BY_ID, tableName);
         return executeSingleResultQuery(query, id);
     }
 
     @Override
     public List<T> findAll() throws DaoException {
-        String query = String.format(FIND_ALL, tableName);
+        String query = String.format(SELECT_ALL, tableName);
         return executeQuery(query);
     }
 

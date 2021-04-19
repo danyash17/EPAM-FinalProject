@@ -19,7 +19,7 @@
 <div class="spec-header">Current user: <i>${name} ${surname}</i></div>
 <div class="account-row">
 <pre class="account-info-query">
-    <b style="color: white">City:</b> ${city}<br>
+    <b style="color: white">Country,City:</b> ${country},${city}<br>
     <b style="color: white">Birthday:</b> ${birthday}<br>
     <b style="color: white">Medal:</b>  <c:if test="${medal==true}">✔</c:if><c:if test="${medal==false}">✘</c:if><br>
     <b style="color: white">Choosed Specialization:</b> ${specialization}<c:if test="${specialization_id==null}">Not choosed</c:if><br>
@@ -29,7 +29,7 @@
     <b style="color: white">Second Exam:</b> ${second_exam}<br>
     <b style="color: white">Third Exam:</b> ${third_exam}<br>
     <b style="color: white">Grade:</b> ${grade}<br>
-    <b style="color: white">TOTAL GRADE:</b> ${grade+(first_exam+second_exam+third_exam)*10}<br>
+    <b style="color: white">TOTAL GRADE:</b> ${grade+first_exam+second_exam+third_exam}<br>
 </pre>
     <div class="rolling-text">
         <span class="textUpper">${successMessage}</span>

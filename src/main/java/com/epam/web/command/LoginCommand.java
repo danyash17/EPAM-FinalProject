@@ -17,14 +17,15 @@ public class LoginCommand implements Command {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
-        String username = request.getParameter("username");
+        String login = request.getParameter("login");
         String password = request.getParameter("password");
-        Optional<User> user = userService.login(username, password);
+        Optional<User> user = userService.login(login, password);
         if (user.isPresent()) {
             User presentUser = user.get();
             request.getSession().setAttribute("id", presentUser.getId());
-            request.getSession().setAttribute("name", presentUser.getUsername());
+            request.getSession().setAttribute("name", presentUser.getName());
             request.getSession().setAttribute("surname", presentUser.getSurname());
+            request.getSession().setAttribute("sex", presentUser.getSex());
             request.getSession().setAttribute("role", presentUser.getRole());
             return CommandResult.forward("/controller?command=mainPage");
         } else {

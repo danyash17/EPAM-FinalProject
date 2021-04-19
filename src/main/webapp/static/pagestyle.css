@@ -246,3 +246,25 @@ input[type=password], select {
         margin-bottom: -20px;
     }
 }
+.report-table {
+    color: black;
+    font-size: 23px;
+    font-family: AG_Futura;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+.report-denied{
+    color: white;
+    background-color: red;
+}
+.report-applied{
+    color: white;
+    background-color: green;
+}
+.report-message{
+    text-align: center;
+    font-size: 23px;
+    font-family: AG_Futura;
+    color: red;
+}

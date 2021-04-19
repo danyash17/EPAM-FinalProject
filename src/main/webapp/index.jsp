@@ -18,11 +18,11 @@
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="login">
         <label>
-            <input type="text" name="username" placeholder="login">
+            <input type="text" name="login" placeholder="Login">
         </label>
         <br>
         <label>
-            <input type="password" name="password" placeholder="password">
+            <input type="password" name="password" placeholder="Password">
         </label>
         <br>
         <input class="button" type="submit" value="Login">

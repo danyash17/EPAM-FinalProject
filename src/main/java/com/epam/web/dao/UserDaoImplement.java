@@ -13,9 +13,9 @@ public class UserDaoImplement extends AbstractDao<Integer,User> implements UserD
     public static final String SQL_SELECT_USER_BY_ID =
             "SELECT name FROM user WHERE id=?";
     public static final String SQL_CREATE_USER =
-            "INSERT INTO user (username, password, role) VALUES (?, md5(?), ?)";
+            "INSERT INTO user (id,login, password,name,surname,sex,role) VALUES (?,?, md5(?), ?,?,?,?)";
     public static final String SQL_UPDATE_USER =
-            "UPDATE user SET username = ?, password = md5(?), role = ? WHERE id = ?";
+            "UPDATE user SET id=?,login = ?, password = md5(?),name=?,surname=?,sex=?, role = ? WHERE id = ?";
 
     public UserDaoImplement(ProxyConnection connection) {
         super(connection, new UserMapper(), tableName);
@@ -23,7 +23,7 @@ public class UserDaoImplement extends AbstractDao<Integer,User> implements UserD
 
     @Override
     protected void create(User user) throws DaoException {
-        executeUpdate(SQL_CREATE_USER, user.getUsername(), user.getPassword(), user.getRole().toString());
+        executeUpdate(SQL_CREATE_USER, user.getId(),user.getLogin(),user.getPassword(),user.getName(),user.getSurname(),user.getSex(),user.getRole());
     }
 
     @Override
@@ -32,7 +32,7 @@ public class UserDaoImplement extends AbstractDao<Integer,User> implements UserD
         if (!userOptional.isPresent()) {
             throw new DaoException("User doesn't exist in table. Id is invalid: " + user.getId());
         }
-        executeUpdate(SQL_UPDATE_USER, user.getUsername(), user.getPassword(), user.getRole().toString(), user.getId());
+        executeUpdate(SQL_UPDATE_USER, user.getId(),user.getLogin(),user.getPassword(),user.getName(),user.getSurname(),user.getSex(),user.getRole());
     }
 
 

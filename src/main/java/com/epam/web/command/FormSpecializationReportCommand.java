@@ -41,9 +41,9 @@ public class FormSpecializationReportCommand implements Command {
         List<Query> queryList = queryService.getSpecifiedQueryList(specializationId);
         Optional<Report> appliedEnrolees=reportService.doCompetition(queryList,plan);
         if (appliedEnrolees.isPresent()) {
-            request.getSession().setAttribute("specializationName",specialization.get().getSpecialization());
+            request.setAttribute("specializationName",specialization.get().getSpecialization());
             request.setAttribute("reportIsFormed",true);
-            request.getSession().setAttribute("appliedEnroleesMap", appliedEnrolees.get().getQueryMap());
+            request.setAttribute("appliedEnroleesMap", appliedEnrolees.get().getQueryMap());
             return CommandResult.forward("/controller?command=reportPage");
         } else {
             request.getSession().setAttribute("reportMessage", "This specialization\n has no registered enrolees yet!");

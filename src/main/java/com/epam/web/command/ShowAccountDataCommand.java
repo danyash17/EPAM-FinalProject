@@ -24,7 +24,7 @@ public class ShowAccountDataCommand implements Command {
             request.getSession().setAttribute("city", presentQuery.getCity());
             request.getSession().setAttribute("birthday", presentQuery.getBirthday());
             request.getSession().setAttribute("school", presentQuery.getSchool());
-            request.getSession().setAttribute("medal", presentQuery.hasMedal());
+            request.getSession().setAttribute("medal", presentQuery.getMedal());
             request.getSession().setAttribute("specialization_id", presentQuery.getSpecializationId());
             request.getSession().setAttribute("specialization", presentQuery.getSpecialization());
             request.getSession().setAttribute("school", presentQuery.getSchool());

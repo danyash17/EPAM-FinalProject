@@ -34,7 +34,7 @@ public class QueryDaoImplement extends AbstractDao<Integer, Query> implements Qu
 
     @Override
     protected void create(Query query) throws DaoException {
-        executeUpdate(SQL_CREATE_QUERY, query.getId(),query.getCountry(), query.getCity(), query.getBirthday(), query.getSchool(), query.hasMedal(), query.getSpecializationId());
+        executeUpdate(SQL_CREATE_QUERY, query.getId(),query.getCountry(), query.getCity(), query.getBirthday(), query.getSchool(), query.getMedal(), query.getSpecializationId());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class QueryDaoImplement extends AbstractDao<Integer, Query> implements Qu
         if (!queryOptional.isPresent()) {
             throw new DaoException("Query doesn't exist in table. Id is invalid: " + query.getId());
         }
-        executeUpdate(SQL_UPDATE_QUERY, query.getId(),query.getCountry(), query.getCity(), query.getBirthday(), query.getSchool(), query.hasMedal(), query.getSpecializationId());
+        executeUpdate(SQL_UPDATE_QUERY, query.getId(),query.getCountry(), query.getCity(), query.getBirthday(), query.getSchool(), query.getMedal(), query.getSpecializationId());
     }
     public Optional<Query> selectExtendedQueryById(int id) throws DaoException {
         return executeSingleResultQuery(SQL_QUERY_WITH_GRADES,id);

@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
@@ -31,34 +31,20 @@
                 <th>Medal</th>
                 <th>Grade</th>
             </tr>
-            <% for (Query i : map.keySet()) {%>
-            <%String type = "report-denied";%>
-            <c:if test="<%=map.get(i)%>"><%type = "report-applied";%></c:if>
-            <tr class="<%=type%>">
-                <td>
-                    <%=i.getEnroleeName()%>(<%=i.getSexEnum()%>)
-                </td>
-                <td>
-                    <%=i.getEntoleeSurname()%>
-                </td>
-                <td>
-                    <%=i.getCountry()%>,<%=i.getCity()%>
-                </td>
-                <td>
-                    <%=i.getBirthday()%>
-                </td>
-                <td>
-                    <%=i.getSchool()%>
-                </td>
-                <td>
-                    <c:if test="<%=i.hasMedal()%>">✔</c:if>
-                    <c:if test="<%=!i.hasMedal()%>">✘</c:if>
-                </td>
-                <td>
-                    <%=i.getTotalGrade()%>
-                </td>
-            </tr>
-            <%}%>
+            <c:forEach var="query" items="${appliedEnroleesMap}">
+                <c:if test="${query.value}"><c:set var = "rowstyle" value = "report-applied"/></c:if>
+                <c:if test="${!query.value}"><c:set var = "rowstyle" value = "report-denied"/></c:if>
+                <tr class="${rowstyle}">
+                    <td>${query.key.enroleeName}(${query.key.sexEnum})</td>
+                    <td>${query.key.enroleeSurname}</td>
+                    <td>${query.key.country},${query.key.city}</td>
+                    <td>${query.key.birthday}</td>
+                    <td>${query.key.school}</td>
+                    <td><c:if test="${query.key.medal}">✔</c:if>
+                        <c:if test="${!query.key.medal}">✘</c:if></td>
+                    <td>${query.key.firstExam+query.key.secondExam+query.key.thirdExam+query.key.grade}</td>
+                </tr>
+            </c:forEach>
         </table>
     </div>
 </c:if>

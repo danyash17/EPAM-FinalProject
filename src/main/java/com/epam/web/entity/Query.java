@@ -1,20 +1,18 @@
 package com.epam.web.entity;
 
-import com.epam.web.comparator.QueryComparator;
-
 import java.util.Date;
 import java.util.Objects;
 
 public class Query implements Entity{
     private final Integer id;
     private final String enroleeName;
-    private final String entoleeSurname;
+    private final String enroleeSurname;
     private final SexEnum sexEnum;
     private final String country;
     private final String city;
     private final Date birthday;
     private final String school;
-    private final boolean medal;
+    private final Boolean medal;
     private final Integer specializationId;
     private final Integer firstExam;
     private final Integer secondExam;
@@ -22,10 +20,10 @@ public class Query implements Entity{
     private final Integer grade;
     private final String specialization;
 
-    public Query(int id,String enroleeName,String enroleeSurname,SexEnum sexEnum,String country, String city, Date birthday, String school, boolean medal, Integer specializationId,String specialization, int firstExam, int secondExam, int thirdExam, int grade) {
+    public Query(int id,String enroleeName,String enroleeSurname,SexEnum sexEnum,String country, String city, Date birthday, String school, Boolean medal, Integer specializationId,String specialization, int firstExam, int secondExam, int thirdExam, int grade) {
         this.id = id;
         this.enroleeName=enroleeName;
-        this.entoleeSurname=enroleeSurname;
+        this.enroleeSurname =enroleeSurname;
         this.sexEnum=sexEnum;
         this.country = country;
         this.city = city;
@@ -49,8 +47,8 @@ public class Query implements Entity{
         return enroleeName;
     }
 
-    public String getEntoleeSurname() {
-        return entoleeSurname;
+    public String getEnroleeSurname() {
+        return enroleeSurname;
     }
 
     public SexEnum getSexEnum() { return sexEnum; }
@@ -69,7 +67,7 @@ public class Query implements Entity{
         return school;
     }
 
-    public boolean hasMedal() {
+    public Boolean getMedal() {
         return medal;
     }
 
@@ -111,7 +109,7 @@ public class Query implements Entity{
         return medal == query.medal &&
                 Objects.equals(id, query.id) &&
                 Objects.equals(enroleeName, query.enroleeName) &&
-                Objects.equals(entoleeSurname, query.entoleeSurname) &&
+                Objects.equals(enroleeSurname, query.enroleeSurname) &&
                 sexEnum == query.sexEnum &&
                 Objects.equals(country, query.country) &&
                 Objects.equals(city, query.city) &&
@@ -127,6 +125,6 @@ public class Query implements Entity{
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, enroleeName, entoleeSurname, sexEnum, country, city, birthday, school, medal, specializationId, firstExam, secondExam, thirdExam, grade, specialization);
+        return Objects.hash(id, enroleeName, enroleeSurname, sexEnum, country, city, birthday, school, medal, specializationId, firstExam, secondExam, thirdExam, grade, specialization);
     }
 }

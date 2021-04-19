@@ -13,8 +13,8 @@ public class QueryComparator implements Comparator<Query> {
             return firstGrade.compareTo(secondGrade);
         }
         else {
-            Boolean firstMedal=first.hasMedal();
-            Boolean secondMedal=second.hasMedal();
+            Boolean firstMedal=first.getMedal();
+            Boolean secondMedal=second.getMedal();
             return firstMedal.compareTo(secondMedal);
         }
     }

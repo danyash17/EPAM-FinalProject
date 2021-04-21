@@ -1,7 +1,7 @@
 package com.epam.web.service;
 
 import com.epam.web.dao.*;
-import com.epam.web.entity.Query;
+import com.epam.web.beans.Query;
 
 import java.util.List;
 import java.util.Optional;

@@ -6,14 +6,28 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="local"/>
+<html lang="${lang}">
 <head>
     <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
 <div class="top">
-    <a href="${pageContext.request.contextPath}/controller?command=logout">Logout</a>
-    <a href="${pageContext.request.contextPath}/controller?command=aboutPage">About</a>
-    <a href="${pageContext.request.contextPath}/controller?command=accountData">Account</a>
-    <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage" >Home</a>
+    <div class="main-hello"><fmt:message key="local.main.greeting"/>,${name}</div>
+    <a href="${pageContext.request.contextPath}/controller?command=logout"><fmt:message key="local.navbar.logout"/></a>
+    <div class="dropdown">
+        <button class="dropbtn"><fmt:message key="local.navbar.lang"/> ▼
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="${pageContext.request.contextPath}/controller?command=localization&&choosedLang=en?sessionLocale=en"><fmt:message key="local.navbar.lang.en"/></a>
+            <a href="${pageContext.request.contextPath}/controller?command=localization&&choosedLang=ru"><fmt:message key="local.navbar.lang.ru"/></a>
+            <a href="${pageContext.request.contextPath}/controller?command=localization&&choosedLang=de"><fmt:message key="local.navbar.lang.de"/></a>
+        </div>
+    </div>
+    <a href="${pageContext.request.contextPath}/controller?command=aboutPage"><fmt:message key="local.navbar.about"/></a>
+    <a href="${pageContext.request.contextPath}/controller?command=accountData"><fmt:message key="local.navbar.account"/></a>
+    <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage"><fmt:message key="local.navbar.home"/></a>
 </div>
 </html>

@@ -1,6 +1,6 @@
 package com.epam.web.dao;
 
-import com.epam.web.entity.Entity;
+import com.epam.web.beans.Entity;
 
 import java.util.List;
 import java.util.Optional;

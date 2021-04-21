@@ -1,6 +1,6 @@
 package com.epam.web.mapper;
 
-import com.epam.web.entity.Entity;
+import com.epam.web.beans.Entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

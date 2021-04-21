@@ -1,7 +1,7 @@
 package com.epam.web.mapper;
 
-import com.epam.web.entity.Query;
-import com.epam.web.entity.SexEnum;
+import com.epam.web.beans.Query;
+import com.epam.web.beans.SexEnum;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

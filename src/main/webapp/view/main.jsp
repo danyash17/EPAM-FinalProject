@@ -1,34 +1,30 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="local"/>
+<html lang="${lang}">
 <head>
  <title>EPAM Faculties</title>
  <link rel="stylesheet" href="../../static/pagestyle.css">
  <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="common-body">
-<div class="top">
- <div class="main-hello">Hello,${name}</div>
- <a href="${pageContext.request.contextPath}/controller?command=logout">Logout</a>
- <a href="${pageContext.request.contextPath}/controller?command=aboutPage">About</a>
- <a href="${pageContext.request.contextPath}/controller?command=accountData">Account</a>
- <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage">Home</a>
-</div>
-<div class="main-faculties">EPAM Faculties</div>
+<jsp:include page="fragments/top-nav.jsp"/>
+<div class="main-faculties"><fmt:message key="local.main.faculties"/></div>
 
 <div class="main-threefacs">
  <form class="main-dev-form" action="${pageContext.request.contextPath}/controller">
   <input type="hidden" name="command" value="devPage">
-  <button class="button">Dev faculty</button>
+  <button class="button"><fmt:message key="local.main.devfaculty"/></button>
  </form>
  <form class="main-qa-form" action="${pageContext.request.contextPath}/controller">
   <input type="hidden" name="command" value="qaPage">
-  <button class="button">QA faculty</button>
+  <button class="button"><fmt:message key="local.main.qafaculty"/></button>
  </form>
  <form class="main-smm-form" action="${pageContext.request.contextPath}/controller" >
   <input type="hidden" name="command" value="smmPage">
-  <button class="button">SMM faculty</button>
+  <button class="button"><fmt:message key="local.main.smmfaculty"/></button>
  </form>
  </div>
 

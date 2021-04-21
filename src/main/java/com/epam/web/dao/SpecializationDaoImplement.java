@@ -1,12 +1,9 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.entity.Entity;
-import com.epam.web.entity.Specialization;
-import com.epam.web.mapper.QueryMapper;
+import com.epam.web.beans.Specialization;
 import com.epam.web.mapper.SpecializationMapper;
 
-import java.util.List;
 import java.util.Optional;
 
 public class SpecializationDaoImplement extends AbstractDao<Integer,Specialization> implements SpecializationDao {

@@ -1,10 +1,8 @@
 package com.epam.web.mapper;
 
-import com.epam.web.entity.Entity;
-import com.epam.web.entity.SexEnum;
-import com.epam.web.entity.User;
-import com.epam.web.entity.UserRole;
-import com.epam.web.mapper.Mapper;
+import com.epam.web.beans.SexEnum;
+import com.epam.web.beans.User;
+import com.epam.web.beans.UserRole;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

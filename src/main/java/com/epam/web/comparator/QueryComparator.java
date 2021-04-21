@@ -1,6 +1,6 @@
 package com.epam.web.comparator;
 
-import com.epam.web.entity.Query;
+import com.epam.web.beans.Query;
 
 import java.util.Comparator;
 

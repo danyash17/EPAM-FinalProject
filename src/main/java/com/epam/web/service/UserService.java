@@ -4,7 +4,7 @@ import com.epam.web.dao.DaoException;
 import com.epam.web.dao.DaoHelper;
 import com.epam.web.dao.DaoHelperFactory;
 import com.epam.web.dao.UserDaoImplement;
-import com.epam.web.entity.User;
+import com.epam.web.beans.User;
 
 import java.util.Optional;
 

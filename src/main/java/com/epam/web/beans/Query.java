@@ -1,4 +1,4 @@
-package com.epam.web.entity;
+package com.epam.web.beans;
 
 import java.util.Date;
 import java.util.Objects;

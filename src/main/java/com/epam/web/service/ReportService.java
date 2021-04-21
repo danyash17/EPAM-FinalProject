@@ -1,12 +1,8 @@
 package com.epam.web.service;
 
 import com.epam.web.comparator.QueryComparator;
-import com.epam.web.dao.DaoException;
-import com.epam.web.dao.DaoHelper;
-import com.epam.web.dao.DaoHelperFactory;
-import com.epam.web.dao.QueryDaoImplement;
-import com.epam.web.entity.Query;
-import com.epam.web.entity.Report;
+import com.epam.web.beans.Query;
+import com.epam.web.beans.Report;
 
 import java.util.*;
 

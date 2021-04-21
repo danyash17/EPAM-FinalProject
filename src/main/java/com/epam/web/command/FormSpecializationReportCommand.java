@@ -1,8 +1,8 @@
 package com.epam.web.command;
 
-import com.epam.web.entity.Query;
-import com.epam.web.entity.Report;
-import com.epam.web.entity.Specialization;
+import com.epam.web.beans.Query;
+import com.epam.web.beans.Report;
+import com.epam.web.beans.Specialization;
 import com.epam.web.service.QueryService;
 import com.epam.web.service.ReportService;
 import com.epam.web.service.ServiceException;
@@ -11,7 +11,6 @@ import com.epam.web.service.SpecializationService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class FormSpecializationReportCommand implements Command {

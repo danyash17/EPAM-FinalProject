@@ -16,6 +16,15 @@
         <servlet-name>main</servlet-name>
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>SessionLocaleFilter</filter-name>
+        <filter-class>com.epam.web.filter.SessionLocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionLocaleFilter</filter-name>
+        <servlet-name>main</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
 </web-app>
 
 

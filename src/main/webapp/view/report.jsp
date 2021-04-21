@@ -1,4 +1,4 @@
-<%@ page import="com.epam.web.entity.Query" %>
+<%@ page import="com.epam.web.beans.Query" %>
 <%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: Даня
@@ -8,7 +8,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="local"/>
 <html>
 <head>
     <title>Report</title>
@@ -18,18 +20,17 @@
 <jsp:include page="fragments/top-nav.jsp"/>
 <body class="common-body">
 <c:if test="${reportIsFormed}">
-    <% Map<Query, Boolean> map = (Map<Query, Boolean>) request.getSession().getAttribute("appliedEnroleesMap");%>
     <div align="center">
         <table class="report-table" border="1" cellpadding="5">
-            <caption><h2>${specializationName} specialization list:</h2></caption>
+            <caption><h2>${specializationName}</h2></caption>
             <tr>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Country,City</th>
-                <th>Birthday</th>
-                <th>School</th>
-                <th>Medal</th>
-                <th>Grade</th>
+                <th><fmt:message key="local.report.name"/></th>
+                <th><fmt:message key="local.report.surname"/></th>
+                <th><fmt:message key="local.report.countrycity"/></th>
+                <th><fmt:message key="local.report.birthday"/></th>
+                <th><fmt:message key="local.report.school"/></th>
+                <th><fmt:message key="local.report.medal"/></th>
+                <th><fmt:message key="local.report.grade"/></th>
             </tr>
             <c:forEach var="query" items="${appliedEnroleesMap}">
                 <c:if test="${query.value}"><c:set var = "rowstyle" value = "report-applied"/></c:if>

@@ -1,6 +1,6 @@
 package com.epam.web.command;
 
-import com.epam.web.entity.Query;
+import com.epam.web.beans.Query;
 import com.epam.web.service.QueryService;
 import com.epam.web.service.ServiceException;
 

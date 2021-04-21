@@ -1,8 +1,6 @@
 package com.epam.web.mapper;
 
-import com.epam.web.entity.Specialization;
-import com.epam.web.entity.User;
-import com.epam.web.entity.UserRole;
+import com.epam.web.beans.Specialization;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
 package com.epam.web.service;
 
 import com.epam.web.dao.*;
-import com.epam.web.entity.Specialization;
+import com.epam.web.beans.Specialization;
 
 import java.util.Optional;
 

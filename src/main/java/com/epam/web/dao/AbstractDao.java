@@ -1,7 +1,7 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.entity.Entity;
+import com.epam.web.beans.Entity;
 import com.epam.web.mapper.Mapper;
 
 import java.sql.PreparedStatement;

@@ -1,6 +1,6 @@
 package com.epam.web.command;
 
-import com.epam.web.entity.User;
+import com.epam.web.beans.User;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.UserService;
 

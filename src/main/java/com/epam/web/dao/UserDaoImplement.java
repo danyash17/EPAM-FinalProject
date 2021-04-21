@@ -1,7 +1,7 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.entity.User;
+import com.epam.web.beans.User;
 import com.epam.web.mapper.UserMapper;
 
 import java.util.Optional;

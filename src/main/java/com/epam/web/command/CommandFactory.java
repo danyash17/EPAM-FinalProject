@@ -69,6 +69,8 @@ public class CommandFactory {
                 return new LoginCommand(new UserService(new DaoHelperFactory()));
             case "logout":
                 return new LogoutCommand();
+            case "localization":
+                return new ChangeLocalizationCommand();
             default:
                 throw new IllegalArgumentException("Unknown command type " + commandType);
         }

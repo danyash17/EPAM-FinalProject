@@ -7,73 +7,80 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="local"/>
 <html>
 <head>
-    <title>Dev faculty</title>
+    <title><fmt:message key="local.faculty.dev.header"/></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <jsp:include page="fragments/top-nav.jsp"/>
 <body class="common-body">
 <img src="images/dev.png" width="300" height="300" align="left">
-<b class="spec-header">Development faculty
+<b class="spec-header"><fmt:message key="local.faculty.dev.header"/>
 </b>
 <p class="spec-description">
-    The Faculty of Development invites you to get useful experience in software development.
-    You can get into one of the following specialties: Java, C++ and Python development.
-    You can choose a specialty below:
+    <fmt:message key="local.faculty.dev.description"/>
 </p>
 <div class="spec-row">
     <div class="spec-column">
         <b>JAVA</b>
         <p class="spec-description">
-            Universal and Popular
+            <fmt:message key="local.faculty.dev.description.java"/>
         </p>
 <c:if test="${role=='ENROLEE'}">
         <form action="${pageContext.request.contextPath}/controller" >
             <input type="hidden" name="command" value="registerJava" id="btnJava">
-            <button class="button">Register</button>
+            <button class="button">
+                <fmt:message key="local.faculty.registerbutton"/></button>
         </form>
 </c:if>
         <c:if test="${role=='ADMIN'}">
             <form action="${pageContext.request.contextPath}/controller" >
                 <input type="hidden" name="command" value="reportJava" >
-                <button class="button">Get Java Report</button>
+                <button class="button">
+                    <fmt:message key="local.account.admin.button.dev.java"/></button></button>
             </form>
         </c:if>
     </div>
     <div class="spec-column">
         <b>C++</b>
         <p class="spec-description">
-            Powerful and Fast
+            <fmt:message key="local.faculty.dev.description.c++"/>
         </p>
     <c:if test="${role=='ENROLEE'}">
         <form action="${pageContext.request.contextPath}/controller" >
             <input type="hidden" name="command" value="registerC" id="btnC">
-            <button class="button">Register</button>
+            <button class="button">
+                <fmt:message key="local.faculty.registerbutton"/></button></button>
         </form>
     </c:if>
 <c:if test="${role=='ADMIN'}">
     <form action="${pageContext.request.contextPath}/controller" >
         <input type="hidden" name="command" value="reportC">
-        <button class="button">Get C++ Report</button>
+        <button class="button">
+            <fmt:message key="local.account.admin.button.dev.c++"/></button></button></button>
     </form>
 </c:if>
     </div>
     <div class="spec-column">
         <b>PYTHON</b>
         <p class="spec-description">
-            Simple and Popular
+            <fmt:message key="local.faculty.dev.description.python"/>
         </p>
         <c:if test="${role=='ENROLEE'}">
         <form action="${pageContext.request.contextPath}/controller" >
             <input type="hidden" name="command" value="registerPython" id="btnPython">
-            <button class="button">Register</button>
+            <button class="button">
+                <fmt:message key="local.faculty.registerbutton"/></button></button>
         </form>
         </c:if>
         <c:if test="${role=='ADMIN'}">
             <form action="${pageContext.request.contextPath}/controller" >
                 <input type="hidden" name="command" value="reportPython">
-                <button class="button">Get Python Report</button>
+                <button class="button">
+                    <fmt:message key="local.account.admin.button.dev.python"/></button></button></button>
             </form>
         </c:if>
     </div>

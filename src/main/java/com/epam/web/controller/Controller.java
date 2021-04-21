@@ -43,9 +43,9 @@ public class Controller extends HttpServlet {
             page="/view/error.jsp";
         }
         if(!isRedirect){
-            forward(request,response,page);
+            request.getRequestDispatcher(page).forward(request, response);
         } else {
-            redirect(request,response,page);
+            response.sendRedirect(page);
         }
     }
 }

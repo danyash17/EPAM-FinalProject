@@ -6,13 +6,16 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="local"/>
+<html lang="${lang}">
 <head>
     <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
 <body>
 <div class="header">
-EPAM UNIVERSITY COMMISSION
+<fmt:message key="local.index.universityheader"/>
 </div>
 </body>
 </html>

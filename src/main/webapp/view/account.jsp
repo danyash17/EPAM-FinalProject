@@ -7,29 +7,32 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${lang}"/>
+<fmt:setBundle basename="local"/>
 <html>
 <head>
-    <title>Account</title>
+    <title><fmt:message key="local.navbar.account"/></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <jsp:include page="fragments/top-nav.jsp"/>
 <body class="common-body">
 <c:if test="${role=='ENROLEE'}">
 <img src="/images/enrolee.png" width="300" height="300" align="left">
-<div class="spec-header">Current user: <i>${name} ${surname}</i></div>
+<div class="spec-header"><fmt:message key="local.account.enrolee.header"/>: <i>${name} ${surname}</i></div>
 <div class="account-row">
 <pre class="account-info-query">
-    <b style="color: white">Country,City:</b> ${country},${city}<br>
-    <b style="color: white">Birthday:</b> ${birthday}<br>
-    <b style="color: white">Medal:</b>  <c:if test="${medal==true}">✔</c:if><c:if test="${medal==false}">✘</c:if><br>
-    <b style="color: white">Choosed Specialization:</b> ${specialization}<c:if test="${specialization_id==null}">Not choosed</c:if><br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.countryandcity"/>:</b> ${country},${city}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.birthday"/>:</b> ${birthday}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.medal"/>:</b>  <c:if test="${medal==true}">✔</c:if><c:if test="${medal==false}">✘</c:if><br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.choosedspecialization"/>:</b> ${specialization}<c:if test="${specialization_id==null}">Not choosed</c:if><br>
 </pre>
     <pre class="account-info-grades">
-    <b style="color: white">First Exam:</b> ${first_exam}<br>
-    <b style="color: white">Second Exam:</b> ${second_exam}<br>
-    <b style="color: white">Third Exam:</b> ${third_exam}<br>
-    <b style="color: white">Grade:</b> ${grade}<br>
-    <b style="color: white">TOTAL GRADE:</b> ${grade+first_exam+second_exam+third_exam}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.firstexam"/>:</b> ${first_exam}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.secondexam"/>:</b> ${second_exam}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.thirdexam"/>:</b> ${third_exam}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.grade"/>:</b> ${grade}<br>
+    <b style="color: white"><fmt:message key="local.account.enrolee.info.totalgrade"/>:</b> ${grade+first_exam+second_exam+third_exam}<br>
 </pre>
     <div class="rolling-text">
         <span class="textUpper">${successMessage}</span>
@@ -38,27 +41,27 @@
     </c:if>
     <c:if test="${role=='ADMIN'}">
         <img src="/images/admin.png" width="300" height="300" align="left">
-        <div class="spec-header">You are an Adninistrator</div>
+        <div class="spec-header"><fmt:message key="local.account.admin.header"/></div>
         <pre class="account-info-query">
-    Choose an action:
+    <fmt:message key="local.account.admin.choose"/>:
     </pre>
         <div class="spec-row">
             <div class="spec-column">
                 <form action="${pageContext.request.contextPath}/controller">
                     <input type="hidden" name="command" value="devPage">
-                    <button class="button">Get Dev report</button>
+                    <button class="button"><fmt:message key="local.account.admin.button.dev"/></button>
                 </form>
             </div>
             <div class="spec-column">
                 <form action="${pageContext.request.contextPath}/controller">
                     <input type="hidden" name="command" value="qaPage">
-                    <button class="button">Get QA report</button>
+                    <button class="button"><fmt:message key="local.account.admin.button.qa"/></button>
                 </form>
             </div>
             <div class="spec-column">
                 <form action="${pageContext.request.contextPath}/controller">
                     <input type="hidden" name="command" value="smmPage">
-                    <button class="button">Get SMM report</button>
+                    <button class="button"><fmt:message key="local.account.admin.button.smm"/></button>
                 </form>
             </div>
         </div>

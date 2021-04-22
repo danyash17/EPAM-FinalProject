@@ -5,11 +5,11 @@
   Time: 21:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${lang}"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
-<html lang="${lang}">
+<html lang="${sessionScope.lang}">
 <head>
     <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
@@ -21,9 +21,9 @@
             <i class="fa fa-caret-down" aria-hidden="true"></i>
         </button>
         <div class="dropdown-content">
-            <a href="${pageContext.request.contextPath}/controller?command=localization&&choosedLang=en?sessionLocale=en"><fmt:message key="local.navbar.lang.en"/></a>
-            <a href="${pageContext.request.contextPath}/controller?command=localization&&choosedLang=ru"><fmt:message key="local.navbar.lang.ru"/></a>
-            <a href="${pageContext.request.contextPath}/controller?command=localization&&choosedLang=de"><fmt:message key="local.navbar.lang.de"/></a>
+            <a href="${pageContext.request.contextPath}/controller?command=localization&sessionLocale=en"><fmt:message key="local.navbar.lang.en"/></a>
+            <a href="${pageContext.request.contextPath}/controller?command=localization&sessionLocale=ru"><fmt:message key="local.navbar.lang.ru"/></a>
+            <a href="${pageContext.request.contextPath}/controller?command=localization&sessionLocale=de"><fmt:message key="local.navbar.lang.de"/></a>
         </div>
     </div>
     <a href="${pageContext.request.contextPath}/controller?command=aboutPage"><fmt:message key="local.navbar.about"/></a>

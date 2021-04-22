@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${lang}"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
-<html lang="${lang}">
+<html lang="${sessionScope.lang}">
 <head>
  <title>EPAM Faculties</title>
  <link rel="stylesheet" href="../../static/pagestyle.css">

@@ -9,7 +9,7 @@ import java.util.Optional;
 public class UserDaoImplement extends AbstractDao<Integer,User> implements UserDao{
     private static final String tableName="user";
     public static final String SQL_SELECT_USER_BY_LOGIN_AND_PASSWORD =
-            "SELECT * FROM user WHERE login=? AND password=?;";
+            "SELECT * FROM user WHERE login=? AND password=md5(?)";
     public static final String SQL_SELECT_USER_BY_ID =
             "SELECT name FROM user WHERE id=?";
     public static final String SQL_CREATE_USER =

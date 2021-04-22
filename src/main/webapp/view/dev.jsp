@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${lang}"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
-<html>
+<html lang="${sessionScope.lang}">
 <head>
     <title><fmt:message key="local.faculty.dev.header"/></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">

@@ -7,9 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${lang}"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
-<html>
+<html lang="${sessionScope.lang}">
 <head>
     <title>Error</title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">

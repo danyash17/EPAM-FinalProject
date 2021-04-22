@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${lang}"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
 <html>
-<head>
+<head lang="${sessionScope.lang}">
     <title><fmt:message key="local.navbar.account"/></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>

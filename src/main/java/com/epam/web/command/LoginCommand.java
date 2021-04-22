@@ -30,7 +30,7 @@ public class LoginCommand implements Command {
             return CommandResult.forward("/controller?command=mainPage");
         } else {
             request.getSession().setAttribute("errorMessage", "Login or password is incorrect");
-            return CommandResult.forward("/controller?command=loginPage");
+            return CommandResult.redirect("/controller?command=loginPage");
         }
 
     }

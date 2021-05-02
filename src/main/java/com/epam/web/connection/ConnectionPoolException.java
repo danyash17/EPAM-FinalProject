@@ -7,5 +7,4 @@ public class ConnectionPoolException extends RuntimeException {
     public ConnectionPoolException(Throwable throwable) {
         super(throwable);
     }
-
 }

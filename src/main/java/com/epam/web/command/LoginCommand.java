@@ -1,6 +1,6 @@
 package com.epam.web.command;
 
-import com.epam.web.beans.User;
+import com.epam.web.entity.User;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.UserService;
 
@@ -27,7 +27,7 @@ public class LoginCommand implements Command {
             request.getSession().setAttribute("surname", presentUser.getSurname());
             request.getSession().setAttribute("sex", presentUser.getSex());
             request.getSession().setAttribute("role", presentUser.getRole());
-            return CommandResult.forward("/controller?command=mainPage");
+            return CommandResult.forward("/controller?command=loadMain&page=1&facultiesPerPage=3");
         } else {
             request.getSession().setAttribute("errorMessage", "Login or password is incorrect");
             return CommandResult.redirect("/controller?command=loginPage");

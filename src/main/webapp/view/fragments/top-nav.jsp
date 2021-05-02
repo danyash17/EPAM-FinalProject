@@ -28,6 +28,6 @@
     </div>
     <a href="${pageContext.request.contextPath}/controller?command=aboutPage"><fmt:message key="local.navbar.about"/></a>
     <a href="${pageContext.request.contextPath}/controller?command=accountData"><fmt:message key="local.navbar.account"/></a>
-    <a class="active" href="${pageContext.request.contextPath}/controller?command=mainPage"><fmt:message key="local.navbar.home"/></a>
+    <a class="active" href="${pageContext.request.contextPath}/controller?command=loadMain&page=1&facultiesPerPage=3"><fmt:message key="local.navbar.home"/></a>
 </div>
 </html>

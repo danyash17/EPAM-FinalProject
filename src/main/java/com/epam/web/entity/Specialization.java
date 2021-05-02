@@ -1,16 +1,18 @@
-package com.epam.web.beans;
+package com.epam.web.entity;
 
 public class Specialization implements Entity {
-    private Integer id;
-    private String specialization;
-    private Integer facultyId;
-    private Integer plan;
+    private final Integer id;
+    private final String specialization;
+    private final Integer facultyId;
+    private final Integer plan;
+    private final String description;
 
-    public Specialization(int id, String specialization, Integer facultyId, int plan) {
+    public Specialization(int id, String specialization, Integer facultyId, int plan, String description) {
         this.id = id;
         this.specialization = specialization;
         this.facultyId = facultyId;
         this.plan = plan;
+        this.description = description;
     }
 
     @Override
@@ -29,4 +31,6 @@ public class Specialization implements Entity {
     public Integer getPlan() {
         return plan;
     }
+
+    public String getDescription() { return description; }
 }

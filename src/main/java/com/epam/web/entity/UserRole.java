@@ -1,4 +1,4 @@
-package com.epam.web.beans;
+package com.epam.web.entity;
 
 public enum UserRole {
     ENROLEE,

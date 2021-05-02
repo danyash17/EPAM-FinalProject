@@ -10,6 +10,6 @@ public class ChangeLocalizationCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
         String language=request.getParameter("sessionLocale");
         request.getSession().setAttribute("lang",language);
-        return CommandResult.redirect("/controller?command=mainPage");
+        return CommandResult.redirect("/controller?command=loadMain&page=1&facultiesPerPage=3");
     }
 }

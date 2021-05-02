@@ -1,15 +1,15 @@
 package com.epam.web.comparator;
 
-import com.epam.web.beans.Query;
+import com.epam.web.entity.Application;
 
 import java.util.Comparator;
 
-public class QueryComparator implements Comparator<Query> {
+public class ApplicationComparator implements Comparator<Application> {
     @Override
-    public int compare(Query first, Query second) {
+    public int compare(Application first, Application second) {
         Integer firstGrade=first.getTotalGrade();
         Integer secondGrade=second.getTotalGrade();
-        if(firstGrade!=secondGrade){
+        if(!firstGrade.equals(secondGrade)){
             return firstGrade.compareTo(secondGrade);
         }
         else {

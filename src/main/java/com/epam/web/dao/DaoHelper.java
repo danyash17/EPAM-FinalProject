@@ -1,7 +1,12 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.service.SpecializationService;
+import com.epam.web.image.FacultyImage;
+import com.epam.web.image.Image;
+import com.epam.web.image.SpecializationImage;
+import com.epam.web.mapper.FacultyImageMapper;
+import com.epam.web.mapper.Mapper;
+import com.epam.web.mapper.SpecializationImageMapper;
 
 import java.sql.SQLException;
 
@@ -18,16 +23,20 @@ public class DaoHelper implements AutoCloseable {
         connection.close();
     }
 
-    public UserDaoImplement createUserDao() {
-        return new UserDaoImplement(connection);
+    public UserDao createUserDao() {
+        return new UserDao(connection);
     }
 
-    public QueryDaoImplement createQueryDao() {
-        return new QueryDaoImplement(connection);
+    public ApplicationDao createApplicationDao() {
+        return new ApplicationDao(connection);
     }
-
-    public SpecializationDaoImplement createSpecializationDao() {
-        return new SpecializationDaoImplement(connection);
+    public FacultyDao createFacultyDao() {
+    return new FacultyDao(connection);
+    }
+    public ImageDao<FacultyImage> createFacultyImageDao()  {return new ImageDao<FacultyImage>(connection,new FacultyImageMapper(),"faculty_image"); }
+    public ImageDao<SpecializationImage> createSpecializationImageDao()  {return new ImageDao<SpecializationImage>(connection,new SpecializationImageMapper(),"specialization_image"); }
+    public SpecializationDao createSpecializationDao() {
+        return new SpecializationDao(connection);
     }
 
     public void beginTransaction() throws SQLException {

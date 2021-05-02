@@ -1,4 +1,4 @@
-package com.epam.web.beans;
+package com.epam.web.entity;
 
 public class User implements Entity {
 
@@ -7,7 +7,7 @@ public class User implements Entity {
     private final String password;
     private String name;
     private String surname;
-    private SexEnum sexEnum;
+    private SexEnum sex;
     private UserRole role = UserRole.ENROLEE;
 
     public User(String login, String password) {
@@ -15,13 +15,13 @@ public class User implements Entity {
         this.password = password;
     }
 
-    public User(Integer id, String login, String password, String name, String surname, SexEnum sexEnum, UserRole role) {
+    public User(Integer id, String login, String password, String name, String surname, SexEnum sex, UserRole role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.name = name;
         this.surname = surname;
-        this.sexEnum = sexEnum;
+        this.sex = sex;
         this.role = role;
     }
 
@@ -47,7 +47,7 @@ public class User implements Entity {
     }
 
     public SexEnum getSex() {
-        return sexEnum;
+        return sex;
     }
 
     public UserRole getRole() {

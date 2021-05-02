@@ -1,31 +1,29 @@
 package com.epam.web.service;
 
-import com.epam.web.comparator.QueryComparator;
-import com.epam.web.beans.Query;
-import com.epam.web.beans.Report;
+import com.epam.web.comparator.ApplicationComparator;
+import com.epam.web.entity.Application;
+import com.epam.web.dto.ReportDto;
 
 import java.util.*;
 
 public class ReportService {
-    private final QueryComparator comparator=new QueryComparator();
+    private final ApplicationComparator comparator=new ApplicationComparator();
 
-    public Optional<Report> doCompetition(List<Query> queryList,int plan) throws Exception, ServiceException {
-        if(!queryList.isEmpty()) {
-            Collections.sort(queryList,comparator);
-            Collections.reverse(queryList);
-            Map<Query, Boolean> queryMap = new HashMap<Query, Boolean>();
-            for (Query i : queryList) {
+    public Optional<ReportDto> doCompetition(List<Application> applicationList, int plan) throws Exception, ServiceException {
+        if(!applicationList.isEmpty()) {
+            Collections.sort(applicationList,comparator);
+            Collections.reverse(applicationList);
+            Map<Application, Boolean> applicationMap = new LinkedHashMap<Application, Boolean>();
+            for (Application i : applicationList) {
                 if(plan>0){
-                queryMap.put(i,true);
+                applicationMap.put(i,true);
                 plan--;
             }
                 else {
-                queryMap.put(i,false);
+                applicationMap.put(i,false);
                 }
             }
-            Map<Query, Boolean> sortedQueryMap = new TreeMap<Query, Boolean>(new QueryComparator().reversed());
-            sortedQueryMap.putAll(queryMap);
-            return Optional.of(new Report(sortedQueryMap));
+            return Optional.of(new ReportDto(applicationMap));
         }
         else {
             return Optional.empty();

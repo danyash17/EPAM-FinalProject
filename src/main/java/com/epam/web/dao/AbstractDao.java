@@ -1,7 +1,7 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.beans.Entity;
+import com.epam.web.entity.Entity;
 import com.epam.web.mapper.Mapper;
 
 import java.sql.PreparedStatement;
@@ -13,9 +13,9 @@ import java.util.Optional;
 
 public abstract class AbstractDao<K extends Number, T extends Entity> implements Dao {
 
-    private static final String SELECT_BY_ID = "SELECT * FROM %s WHERE query_id = ?";
+    private static final String SELECT_BY_ID = "SELECT * FROM %s WHERE application_id = ?";
     private static final String SELECT_ALL = "SELECT * FROM %s";
-    private static final String DELETE = "DELETE FROM %s WHERE query_id = ?";
+    private static final String DELETE = "DELETE FROM %s WHERE application_id = ?";
 
     private final ProxyConnection connection;
     private final Mapper<T> mapper;
@@ -59,7 +59,7 @@ public abstract class AbstractDao<K extends Number, T extends Entity> implements
         List<T> entities = executeQuery(query, params);
 
         if (entities.size() > 1) {
-            throw new DaoException("Query is not single");
+            throw new DaoException("Application is not single");
         }
 
         if (entities.size() > 0) {

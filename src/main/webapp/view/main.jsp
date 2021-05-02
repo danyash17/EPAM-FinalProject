@@ -1,48 +1,46 @@
-<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
 <html lang="${sessionScope.lang}">
 <head>
- <title>EPAM Faculties</title>
- <link rel="stylesheet" href="../../static/pagestyle.css">
- <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <title>EPAM Faculties</title>
+    <link rel="stylesheet" href="../../static/pagestyle.css">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="common-body">
 <jsp:include page="fragments/top-nav.jsp"/>
 <div class="main-faculties"><fmt:message key="local.main.faculties"/></div>
-
-<div class="main-threefacs">
- <form class="main-dev-form" action="${pageContext.request.contextPath}/controller">
-  <input type="hidden" name="command" value="devPage">
-  <button class="button"><fmt:message key="local.main.devfaculty"/></button>
- </form>
- <form class="main-qa-form" action="${pageContext.request.contextPath}/controller">
-  <input type="hidden" name="command" value="qaPage">
-  <button class="button"><fmt:message key="local.main.qafaculty"/></button>
- </form>
- <form class="main-smm-form" action="${pageContext.request.contextPath}/controller" >
-  <input type="hidden" name="command" value="smmPage">
-  <button class="button"><fmt:message key="local.main.smmfaculty"/></button>
- </form>
- </div>
-
-<div class="row">
- <a class="col-3" href="${pageContext.request.contextPath}/controller?command=devPage">
-  <div class="dev-image"><img src="../images/dev.png" height="325"
-                            alt="dev"></div>
- </a>
-
- <a class="col-3" href="${pageContext.request.contextPath}/controller?command=qaPage">
-  <div class="qa-image"><img src="../images/qa.png" height="300"
-                             alt="qa"></div>
- </a>
-
- <a class="col-3" href="${pageContext.request.contextPath}/controller?command=smmPage">
-  <div class="smm-image"><img src="../images/smm.png" height="300"
-                             alt="smm"></div>
- </a>
+<div class="main-table">
+    <c:set var="count" value="1" scope="page"/>
+    <c:forEach var="faculty" items="${facultyMap}">
+        <table class="pagination-table">
+            <tr>
+                <th colspan="3">
+                    <form action="${pageContext.request.contextPath}/controller">
+                        <input type="hidden" name="command" value="loadFaculty">
+                        <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
+                        <input type="hidden" name="page" value="1">
+                        <input type="hidden" name="specializationsPerPage" value="3">
+                        <button class="button">${faculty.key.faculty}</button>
+                    </form>
+                </th>
+            </tr>
+            <tr align="center">
+                <td>${faculty.key.firstExam}</td>
+                <td>${faculty.key.secondExam}</td>
+                <td>${faculty.key.thirdExam}</td>
+            </tr>
+            <tr>
+                <th colspan="3">
+                    <img src="${faculty.value.path}" width="150" height="150">
+                </th>
+            </tr>
+        </table>
+    </c:forEach>
 </div>
+<jsp:include page="fragments/faculty-pagination.jsp"/>
 </body>
 </html>

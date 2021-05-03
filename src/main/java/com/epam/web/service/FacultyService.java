@@ -26,7 +26,7 @@ public class FacultyService {
         }
     }
 
-    public Optional<Faculty> getFaculty(int facultyId) throws Exception, ServiceException {
+    public Optional<Faculty> getFaculty(Integer facultyId) throws Exception, ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             FacultyDao dao = daoHelper.createFacultyDao();
             return dao.selectFacultyById(facultyId);

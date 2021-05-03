@@ -7,7 +7,7 @@ import com.epam.web.mapper.ApplicationMapper;
 import java.util.List;
 import java.util.Optional;
 
-public class ApplicationDao extends AbstractDao<Integer, Application> {
+public class ApplicationDao extends AbstractDao<Application> {
     private static final String tableName = "application";
 
     public ApplicationDao(ProxyConnection connection) {
@@ -44,10 +44,10 @@ public class ApplicationDao extends AbstractDao<Integer, Application> {
         }
         executeUpdate(SQL_UPDATE_APPLICATION, application.getId(), application.getCountry(), application.getCity(),  application.getMedal(), application.getSpecializationId());
     }
-    public Optional<Application> selectExtendedApplicationById(int id) throws DaoException {
+    public Optional<Application> selectExtendedApplicationById(Integer id) throws DaoException {
         return executeSingleResultQuery(SQL_SELECT_APPLICATION_WITH_GRADES,id);
     }
-    public List<Application> selectLimitedSpecifiedApplicationListBySpecificationId(int specialization_id,int page,int total) throws DaoException {
+    public List<Application> selectLimitedSpecifiedApplicationListBySpecificationId(Integer specialization_id,int page,int total) throws DaoException {
         return executeQuery(SQL_SELECT_APPLICATION_WITH_GRADES_BY_SPECIALIZATION,specialization_id,page,total);
     }
     public void updateSpecializationColumnById(Integer id, Integer specializationId) throws DaoException {

@@ -2,8 +2,8 @@ package com.epam.web.command;
 
 import com.epam.web.entity.Faculty;
 import com.epam.web.entity.Specialization;
-import com.epam.web.image.FacultyImage;
-import com.epam.web.image.SpecializationImage;
+import com.epam.web.entity.image.FacultyImage;
+import com.epam.web.entity.image.SpecializationImage;
 import com.epam.web.service.FacultyService;
 import com.epam.web.service.ImageService;
 import com.epam.web.service.ServiceException;

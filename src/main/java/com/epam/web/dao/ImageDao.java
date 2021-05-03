@@ -1,13 +1,13 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.image.Image;
+import com.epam.web.entity.image.Image;
 import com.epam.web.mapper.Mapper;
 
 import java.util.List;
 import java.util.Optional;
 
-public class ImageDao<I extends Image> extends AbstractDao<Integer, I> {
+public class ImageDao<I extends Image> extends AbstractDao<I> {
     private final String SQL_CREATE_IMAGE;
     private final String SQL_UPDATE_IMAGE;
     private final String SQL_SELECT_LIMITED_FACULTY_IMAGES;
@@ -38,10 +38,10 @@ public class ImageDao<I extends Image> extends AbstractDao<Integer, I> {
     public List<I> selectLimitedFacultyImages() throws DaoException {
         return executeQuery(SQL_SELECT_LIMITED_FACULTY_IMAGES);
     }
-    public List<I> selectLimitedSpecializationImagesById(int id) throws DaoException {
+    public List<I> selectLimitedSpecializationImagesById(Integer id) throws DaoException {
         return executeQuery(SQL_SELECT_LIMITED_SPECIALIZATION_IMAGES,id);
     }
-    public Optional<I> selectSingleImage(int id) throws DaoException {
+    public Optional<I> selectSingleImage(Integer id) throws DaoException {
         return executeSingleResultQuery(SQL_SELECT_IMAGE,id);
     }
 }

@@ -13,7 +13,7 @@ public class ApplicationService {
         this.factory = daoHelper;
     }
 
-    public Optional<Application> getApplication(int id) throws ServiceException, Exception {
+    public Optional<Application> getApplication(Integer id) throws ServiceException, Exception {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.selectExtendedApplicationById(id);
@@ -43,7 +43,7 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getSpecifiedApplicationList(int specializationId,int page,int total) throws Exception, ServiceException {
+    public List<Application> getSpecifiedApplicationList(Integer specializationId,int page,int total) throws Exception, ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.selectLimitedSpecifiedApplicationListBySpecificationId(specializationId,page,total);

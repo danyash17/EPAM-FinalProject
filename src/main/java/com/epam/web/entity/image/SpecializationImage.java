@@ -1,6 +1,4 @@
-package com.epam.web.image;
-
-import com.epam.web.entity.Entity;
+package com.epam.web.entity.image;
 
 public class SpecializationImage extends Image{
     private final Integer specializationId;

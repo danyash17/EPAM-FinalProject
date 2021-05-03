@@ -7,7 +7,7 @@ public class Specialization implements Entity {
     private final Integer plan;
     private final String description;
 
-    public Specialization(int id, String specialization, Integer facultyId, int plan, String description) {
+    public Specialization(Integer id, String specialization, Integer facultyId, int plan, String description) {
         this.id = id;
         this.specialization = specialization;
         this.facultyId = facultyId;

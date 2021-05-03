@@ -1,4 +1,4 @@
-package com.epam.web.image;
+package com.epam.web.entity.image;
 
 import com.epam.web.entity.Entity;
 

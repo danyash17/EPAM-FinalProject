@@ -16,7 +16,7 @@ public class Application implements Entity{
     private final Integer thirdExam;
     private final Integer grade;
 
-    public Application(int id, String name, String surname, SexEnum sex, String country, String city, Boolean medal, Integer specializationId, int firstExam, int secondExam, int thirdExam, int grade) {
+    public Application(Integer id, String name, String surname, SexEnum sex, String country, String city, Boolean medal, Integer specializationId, int firstExam, int secondExam, int thirdExam, int grade) {
         this.id = id;
         this.name = name;
         this.surname = surname;

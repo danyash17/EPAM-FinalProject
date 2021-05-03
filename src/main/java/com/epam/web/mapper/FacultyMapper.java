@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class FacultyMapper implements Mapper<Faculty> {
     @Override
     public Faculty map(ResultSet resultSet) throws SQLException {
-        Integer facultyId=resultSet.getInt("faculty_id");
+        int facultyId=resultSet.getInt("faculty_id");
         String faculty=resultSet.getString("faculty");
         String first_exam=resultSet.getString("first_exam");
         String second_exam=resultSet.getString("second_exam");

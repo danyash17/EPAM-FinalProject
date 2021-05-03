@@ -9,7 +9,7 @@ import com.epam.web.mapper.SpecializationMapper;
 import java.util.List;
 import java.util.Optional;
 
-public class SpecializationDao extends AbstractDao<Integer,Specialization> {
+public class SpecializationDao extends AbstractDao<Specialization> {
     private static final String tableName = "specialization";
     public SpecializationDao(ProxyConnection connection) {
         super(connection, new SpecializationMapper(), tableName);
@@ -41,7 +41,7 @@ public class SpecializationDao extends AbstractDao<Integer,Specialization> {
         return executeSingleResultQuery(SQL_SELECT_SPECIALIZATION,specializationId);
     }
 
-    public List<Specialization> selectLimitedSpecializations(int facultyId, int pageid, int total) throws DaoException {
+    public List<Specialization> selectLimitedSpecializations(Integer facultyId, int pageid, int total) throws DaoException {
     return executeQuery(SQL_SELECT_LIMITED_SPECIALIZATIONS_BY_FACULTY_ID,facultyId,pageid,total);
     }
 }

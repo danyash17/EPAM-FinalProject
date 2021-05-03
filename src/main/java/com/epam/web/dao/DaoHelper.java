@@ -1,11 +1,9 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.image.FacultyImage;
-import com.epam.web.image.Image;
-import com.epam.web.image.SpecializationImage;
+import com.epam.web.entity.image.FacultyImage;
+import com.epam.web.entity.image.SpecializationImage;
 import com.epam.web.mapper.FacultyImageMapper;
-import com.epam.web.mapper.Mapper;
 import com.epam.web.mapper.SpecializationImageMapper;
 
 import java.sql.SQLException;

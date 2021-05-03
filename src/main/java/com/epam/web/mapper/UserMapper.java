@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class UserMapper implements Mapper {
     @Override
     public User map(ResultSet resultSet) throws SQLException {
-        Integer id=resultSet.getInt("id");
+        int id=resultSet.getInt("id");
         String name=resultSet.getString("name");
         String surname=resultSet.getString("surname");
         String sex=resultSet.getString("sex");

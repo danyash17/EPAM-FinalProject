@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class AbstractDao<K extends Number, T extends Entity> implements Dao {
+public abstract class AbstractDao<T extends Entity> implements Dao {
 
     private static final String SELECT_BY_ID = "SELECT * FROM %s WHERE application_id = ?";
     private static final String SELECT_ALL = "SELECT * FROM %s";
@@ -80,7 +80,7 @@ public abstract class AbstractDao<K extends Number, T extends Entity> implements
     }
 
     @Override
-    public Optional<T> findById(Number id) throws DaoException {
+    public Optional<T> findById(Integer id) throws DaoException {
         String query = String.format(SELECT_BY_ID, tableName);
         return executeSingleResultQuery(query, id);
     }
@@ -105,7 +105,7 @@ public abstract class AbstractDao<K extends Number, T extends Entity> implements
     protected abstract void update(T entity) throws DaoException;
 
     @Override
-    public void deleteById(Number id) throws DaoException {
+    public void deleteById(Integer id) throws DaoException {
         String query = String.format(DELETE, tableName);
         executeUpdate(query, id);
     }

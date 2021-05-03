@@ -7,7 +7,7 @@ import com.epam.web.mapper.FacultyMapper;
 import java.util.List;
 import java.util.Optional;
 
-public class FacultyDao extends AbstractDao<Integer, Faculty> {
+public class FacultyDao extends AbstractDao<Faculty> {
     private static final String tableName = "faculty";
     private static final String SQL_CREATE_FACULTY="INSERT INTO faculty (faculty_id,faculty,first_exam,second_exam,third_exam) VALUES (?,?,?,?,?)";
     private static final String SQL_UPDATE_FACULTY="UPDATE faculty SET faculty_id=?,faculty=?,first_exam=?,second_exam=?,third_exam=?";
@@ -35,7 +35,7 @@ public class FacultyDao extends AbstractDao<Integer, Faculty> {
         return executeQuery(SQL_SELECT_LIMITED_FACULTIES,pageid,total);
     }
 
-    public Optional<Faculty> selectFacultyById(int facultyId) throws DaoException {
+    public Optional<Faculty> selectFacultyById(Integer facultyId) throws DaoException {
     return executeSingleResultQuery(SQL_SELECT_FACULTY_BY_ID,facultyId);
     }
 }

@@ -1,8 +1,6 @@
 package com.epam.web.mapper;
 
-import com.epam.web.entity.Entity;
-import com.epam.web.image.FacultyImage;
-import com.epam.web.image.Image;
+import com.epam.web.entity.image.FacultyImage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

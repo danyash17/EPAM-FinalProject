@@ -1,8 +1,8 @@
 package com.epam.web.service;
 
 import com.epam.web.dao.*;
-import com.epam.web.image.FacultyImage;
-import com.epam.web.image.SpecializationImage;
+import com.epam.web.entity.image.FacultyImage;
+import com.epam.web.entity.image.SpecializationImage;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +22,7 @@ public class ImageService{
             throw new ServiceException(e, e.getMessage());
         }
     }
-    public List<SpecializationImage> getLimitedSpecializationImages(int facultyId) throws ServiceException, Exception {
+    public List<SpecializationImage> getLimitedSpecializationImages(Integer facultyId) throws ServiceException, Exception {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();
             return dao.selectLimitedSpecializationImagesById(facultyId);
@@ -31,7 +31,7 @@ public class ImageService{
         }
     }
 
-    public Optional<FacultyImage> getFacultyImage(int id) throws Exception, ServiceException {
+    public Optional<FacultyImage> getFacultyImage(Integer id) throws Exception, ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<FacultyImage> dao = daoHelper.createFacultyImageDao();
             return dao.selectSingleImage(id);
@@ -39,7 +39,7 @@ public class ImageService{
             throw new ServiceException(e, e.getMessage());
         }
     }
-    public Optional<SpecializationImage> getSpecializationImage(int id) throws Exception, ServiceException {
+    public Optional<SpecializationImage> getSpecializationImage(Integer id) throws Exception, ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();
             return dao.selectSingleImage(id);

@@ -6,7 +6,7 @@ import com.epam.web.mapper.UserMapper;
 
 import java.util.Optional;
 
-public class UserDao extends AbstractDao<Integer,User>{
+public class UserDao extends AbstractDao<User>{
     private static final String tableName="user";
     public static final String SQL_SELECT_USER_BY_LOGIN_AND_PASSWORD =
             "SELECT * FROM user WHERE login=? AND password=md5(?)";
@@ -39,7 +39,8 @@ public class UserDao extends AbstractDao<Integer,User>{
     public Optional<User> findUserByLoginAndPassword(String login, String password) throws DaoException {
         return executeSingleResultQuery(SQL_SELECT_USER_BY_LOGIN_AND_PASSWORD,login,password);
     }
-    public Optional<User> findUserByID(int id) throws DaoException {
-        return executeSingleResultQuery(SQL_SELECT_USER_BY_ID,id);
+
+    public Optional<User> findUserByID(Integer id) throws DaoException {
+        return executeSingleResultQuery(SQL_SELECT_USER_BY_ID, id);
     }
 }

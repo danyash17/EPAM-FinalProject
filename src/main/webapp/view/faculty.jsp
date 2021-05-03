@@ -37,7 +37,7 @@
                         <form action="${pageContext.request.contextPath}/controller" >
                             <input type="hidden" name="command" value="register">
                             <input type="hidden" name="registrationId" value="${specialization.key.id}" >
-                            <button class="button">Register</button>
+                            <button class="button"><fmt:message key="local.faculty.registerbutton"/></button>
                         </form>
                     </c:if>
                     <c:if test="${role=='ADMIN'}">
@@ -46,7 +46,7 @@
                             <input type="hidden" name="page" value="1">
                             <input type="hidden" name="applicantsPerPage" value="5">
                             <input type="hidden" name="reportingSpecializationId" value="${specialization.key.id}">
-                            <button class="button">Get ${specialization.key.specialization} report</button>
+                            <button class="button">${specialization.key.specialization} <fmt:message key="local.account.admin.report"/></button>
                         </form>
                     </c:if>
                 </th>

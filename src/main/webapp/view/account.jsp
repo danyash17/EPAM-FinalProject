@@ -44,25 +44,21 @@
     <fmt:message key="local.account.admin.choose"/>:
     </pre>
         <div class="spec-row">
+            <c:forEach items="${facultyMap}" var="faculty">
             <div class="spec-column">
                 <form action="${pageContext.request.contextPath}/controller">
-                    <input type="hidden" name="command" value="devPage">
-                    <button class="button"><fmt:message key="local.account.admin.button.dev"/></button>
+                    <input type="hidden" name="command" value="loadFaculty">
+                    <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
+                    <input type="hidden" name="page" value="1">
+                    <input type="hidden" name="specializationsPerPage" value="3">
+                    <button class="button">${faculty.key.faculty}</button>
                 </form>
             </div>
-            <div class="spec-column">
-                <form action="${pageContext.request.contextPath}/controller">
-                    <input type="hidden" name="command" value="qaPage">
-                    <button class="button"><fmt:message key="local.account.admin.button.qa"/></button>
-                </form>
-            </div>
-            <div class="spec-column">
-                <form action="${pageContext.request.contextPath}/controller">
-                    <input type="hidden" name="command" value="smmPage">
-                    <button class="button"><fmt:message key="local.account.admin.button.smm"/></button>
-                </form>
-            </div>
+            </c:forEach>
         </div>
+    </c:if>
+    <c:if test="${role=='ADMIN'}">
+    <jsp:include page="fragments/adminpage-pagination.jsp"/>
     </c:if>
 </div>
 </body>

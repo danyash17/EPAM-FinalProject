@@ -18,6 +18,8 @@ public class CommandFactory {
                 return new ShowPageCommand("/view/error.jsp");
             case "accountData":
                 return new ShowAccountDataCommand(new ApplicationService(new DaoHelperFactory()), new SpecializationService(new DaoHelperFactory()));
+            case "loadAdminAccount":
+                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "accountData");
             case "reportPage":
                 return new ShowPageCommand("/view/report.jsp");
             case "loginPage":
@@ -25,7 +27,7 @@ public class CommandFactory {
             case "register":
                 return new UpdateSpecializationCommand(new ApplicationService(new DaoHelperFactory()));
             case "loadMain":
-                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()));
+                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "mainPage");
             case "loadFaculty":
                 return new LoadSpecializationsCommand(new FacultyService(new DaoHelperFactory()), new SpecializationService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()));
             case "report":

@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="local"/>
+<html lang="${sessionScope.lang}">
 <head>
-    <title>Login</title>
+    <meta charset="x-UTF-16LE-BOM"/>
+    <title><fmt:message key="local.index.authorize"/></title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/pagestyle.css">
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
@@ -19,14 +22,17 @@
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="login">
         <label>
-            <input type="text" name="login" placeholder="Login">
+            <fmt:message key="local.index.login" var="login"/>
+            <input type="text" name="login" placeholder="${login}">
         </label>
         <br>
         <label>
-            <input type="password" name="password" placeholder="Password">
+            <fmt:message key="local.index.password" var="pass"/>
+            <input type="password" name="password" placeholder="${pass}">
         </label>
         <br>
-        <input class="button" type="submit" value="Log in">
+        <fmt:message key="local.index.authorize" var="auth"/>
+        <input class="button" type="submit" value="${auth}">
     </form>
     </div>
 </div>

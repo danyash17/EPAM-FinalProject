@@ -51,7 +51,7 @@
                     <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
                     <input type="hidden" name="page" value="1">
                     <input type="hidden" name="specializationsPerPage" value="3">
-                    <button class="button">${faculty.key.faculty}</button>
+                    <button class="button"><fmt:message key="local.account.admin.report"/> ${faculty.key.faculty}</button>
                 </form>
             </div>
             </c:forEach>

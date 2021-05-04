@@ -5,6 +5,8 @@ import com.epam.web.entity.image.FacultyImage;
 import com.epam.web.service.FacultyService;
 import com.epam.web.service.ImageService;
 import com.epam.web.service.ServiceException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class LoadFacultiesCommand implements Command {
+    private final Logger LOGGER = LogManager.getLogger(LoadFacultiesCommand.class);
     private final FacultyService facultyService;
     private final ImageService imageService;
     private final String loadAtPage;
@@ -28,10 +31,11 @@ public class LoadFacultiesCommand implements Command {
         int page = Integer.parseInt(request.getParameter("page"));
         int total = Integer.parseInt(request.getParameter("facultiesPerPage"));
         List<Faculty> facultyList = facultyService.getLimitedFaculties((page - 1) * total, total);
-        List<FacultyImage> imageList = imageService.getLimitedFacultyImages();
+        List<FacultyImage> imageList = imageService.getFacultyImages();
         LinkedHashMap<Faculty,FacultyImage> facultyMap=getMap(facultyList,imageList);
         List<Faculty> nextFacultyList = facultyService.getLimitedFaculties(page * total, total);
         if(facultyMap.isEmpty()){
+            LOGGER.warn("Critical images error");
             request.getSession().setAttribute("reportMessage", "Images error");
             return CommandResult.forward("/controller?command=errorPage");
         }

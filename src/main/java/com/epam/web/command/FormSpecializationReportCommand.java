@@ -1,5 +1,6 @@
 package com.epam.web.command;
 
+import com.epam.web.comparator.ApplicationComparator;
 import com.epam.web.entity.Application;
 import com.epam.web.dto.ReportDto;
 import com.epam.web.entity.Specialization;
@@ -7,6 +8,8 @@ import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ReportService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FormSpecializationReportCommand implements Command {
+    private final Logger LOGGER = LogManager.getLogger(FormSpecializationReportCommand.class);
     private final ReportService reportService;
     private final ApplicationService applicationService;
     private final SpecializationService specializationService;
@@ -35,14 +39,16 @@ public class FormSpecializationReportCommand implements Command {
             plan=specialization.get().getPlan();
         }
         else {
+            LOGGER.warn("Specialization is not found in DB");
             request.getSession().setAttribute("reportMessage", "There is no data about specialization in database");
             return CommandResult.forward("/controller?command=reportPage");
         }
-        List<Application> applicationsList = applicationService.getSpecifiedApplicationList(specializationId,(page - 1) * total, total);
-        List<Application> nextApplicationsList = applicationService.getSpecifiedApplicationList(specializationId,page * total, total);
-        Optional<ReportDto> appliedEnrolees=reportService.doCompetition(applicationsList,plan);
-        if (appliedEnrolees.isPresent()) {
-            appliedEnrolees.get().getApplicationMap().forEach((key, value)-> {
+        List<Application> fullList=applicationService.getFullSpecifiedApplicationList(specializationId);
+        List<Application> nextApplicationsList = applicationService.getLimitedSpecifiedApplicationList(specializationId,page * total, total);
+        Optional<ReportDto> fullAppliedEnrolees=reportService.doCompetition(fullList,plan,0, fullList.size(),new ApplicationComparator());
+        Optional<ReportDto> appliedEnrolees=reportService.doCompetition(fullList,plan,(page - 1) * total, page*total,new ApplicationComparator());
+        if (fullAppliedEnrolees.isPresent()) {
+            fullAppliedEnrolees.get().getApplicationMap().forEach((key, value)-> {
                 try {
                     applicationService.updateStatus(key.getId(),value);
                 } catch (Exception | ServiceException e) {
@@ -55,6 +61,7 @@ public class FormSpecializationReportCommand implements Command {
             request.setAttribute("appliedEnroleesMap", appliedEnrolees.get().getApplicationMap());
             return CommandResult.forward("/controller?command=reportPage");
         } else {
+            LOGGER.info("Empty specialization");
             request.getSession().setAttribute("reportMessage", "This specialization\n has no registered enrolees yet!");
             return CommandResult.forward("/controller?command=reportPage");
         }

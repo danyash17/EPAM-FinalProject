@@ -14,18 +14,18 @@ public class ImageService{
         this.factory = factory;
     }
 
-    public List<FacultyImage> getLimitedFacultyImages() throws ServiceException, Exception {
+    public List<FacultyImage> getFacultyImages() throws ServiceException, Exception {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<FacultyImage> dao = daoHelper.createFacultyImageDao();
-            return dao.selectLimitedFacultyImages();
+            return dao.selectFacultyImages();
         } catch (DaoException e) {
             throw new ServiceException(e, e.getMessage());
         }
     }
-    public List<SpecializationImage> getLimitedSpecializationImages(Integer facultyId) throws ServiceException, Exception {
+    public List<SpecializationImage> getSpecializationImages(Integer facultyId) throws ServiceException, Exception {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();
-            return dao.selectLimitedSpecializationImagesById(facultyId);
+            return dao.selectSpecializationImagesById(facultyId);
         } catch (DaoException e) {
             throw new ServiceException(e, e.getMessage());
         }

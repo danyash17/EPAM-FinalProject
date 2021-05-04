@@ -3,30 +3,33 @@ package com.epam.web.command;
 import com.epam.web.dao.DaoHelperFactory;
 import com.epam.web.service.*;
 import com.epam.web.validator.AuthentificationValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class CommandFactory {
+    private final Logger LOGGER = LogManager.getLogger(CommandFactory.class);
     public Command create(String commandType) {
         switch (commandType) {
             case Commands.MAIN_PAGE:
-                return new ShowPageCommand("/view/main.jsp");
+                return new ShowPageCommand(Paths.MAIN);
             case Commands.FACULTY_PAGE:
-                return new ShowPageCommand("/view/faculty.jsp");
+                return new ShowPageCommand(Paths.FACULTY);
             case Commands.ABOUT_PAGE:
-                return new ShowPageCommand("/view/about.jsp");
+                return new ShowPageCommand(Paths.ABOUT);
             case Commands.ACCOUNT_PAGE:
-                return new ShowPageCommand("/view/account.jsp");
+                return new ShowPageCommand(Paths.ACCOUNT);
             case Commands.ERROR_PAGE:
-                return new ShowPageCommand("/view/error.jsp");
+                return new ShowPageCommand(Paths.ERROR);
             case Commands.LOAD_ACCOUNT:
                 return new ShowAccountDataCommand(new ApplicationService(new DaoHelperFactory()), new SpecializationService(new DaoHelperFactory()));
             case Commands.LOAD_ADMIN_ACCOUNT:
                 return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "accountData");
             case Commands.REPORT_PAGE:
-                return new ShowPageCommand("/view/report.jsp");
+                return new ShowPageCommand(Paths.REPORT);
             case Commands.LOGIN_PAGE:
-                return new ShowPageCommand("/index.jsp");
+                return new ShowPageCommand(Paths.INDEX);
             case Commands.SPECIALIZATION_REGISTER:
-                return new UpdateSpecializationCommand(new ApplicationService(new DaoHelperFactory()));
+                return new UpdateSpecializationCommand(new ApplicationService(new DaoHelperFactory()), new ReportService(), new SpecializationService(new DaoHelperFactory()));
             case Commands.LOAD_MAIN:
                 return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "mainPage");
             case Commands.LOAD_FACULTY:
@@ -39,8 +42,10 @@ public class CommandFactory {
                 return new LogoutCommand();
             case Commands.CHANGE_LOCALIZATION:
                 return new ChangeLocalizationCommand();
-            default:
+            default: {
+                LOGGER.warn("Unknown command type " + commandType);
                 throw new IllegalArgumentException("Unknown command type " + commandType);
+            }
         }
     }
 }

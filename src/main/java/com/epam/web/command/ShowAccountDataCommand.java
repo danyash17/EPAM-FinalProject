@@ -6,12 +6,15 @@ import com.epam.web.entity.UserRole;
 import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 public class ShowAccountDataCommand implements Command {
+    private final Logger LOGGER = LogManager.getLogger(ShowAccountDataCommand.class);
     private final ApplicationService applicationService;
     private final SpecializationService specializationService;
 
@@ -28,6 +31,9 @@ public class ShowAccountDataCommand implements Command {
         if (application.isPresent()){
             specialization=specializationService.getSpecialization(application.get().getSpecializationId());
         }
+        if(role.name().toUpperCase().equals("ADMIN")) {
+            return CommandResult.forward("/controller?command=accountPage");
+        }
         if (specialization.isPresent()) {
             Application presentApplication = application.get();
             Specialization presentSpecialization=specialization.get();
@@ -42,11 +48,9 @@ public class ShowAccountDataCommand implements Command {
             request.getSession().setAttribute("grade", presentApplication.getGrade());
             return CommandResult.forward("/controller?command=accountPage");
         }
-        if(role.name().toUpperCase().equals("ADMIN")) {
-            return CommandResult.forward("/controller?command=accountPage");
-        }
         else {
-            request.getSession().setAttribute("errorMessage", "Ooos...Something went wrong,please try again");
+            LOGGER.warn("Account data error");
+            request.getSession().setAttribute("errorMessage", "Account data error");
             return CommandResult.redirect("/controller?command=errorPage");
         }
     }

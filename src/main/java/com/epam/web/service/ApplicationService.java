@@ -43,7 +43,7 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getSpecifiedApplicationList(Integer specializationId,int page,int total) throws Exception, ServiceException {
+    public List<Application> getLimitedSpecifiedApplicationList(Integer specializationId, int page, int total) throws Exception, ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.selectLimitedSpecifiedApplicationListBySpecificationId(specializationId,page,total);
@@ -57,6 +57,16 @@ public class ApplicationService {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             dao.updateSpecializationReportResultById(applicationId,result);
+        }
+        catch (DaoException e){
+            throw new ServiceException(e,e.getMessage());
+        }
+    }
+
+    public List<Application> getFullSpecifiedApplicationList(int specializationId) throws Exception, ServiceException {
+        try(DaoHelper daoHelper=factory.create()){
+            ApplicationDao dao=daoHelper.createApplicationDao();
+            return dao.selectSpecifiedApplicationListBySpecificationId(specializationId);
         }
         catch (DaoException e){
             throw new ServiceException(e,e.getMessage());

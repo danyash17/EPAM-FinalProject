@@ -7,25 +7,25 @@ import com.epam.web.dto.ReportDto;
 import java.util.*;
 
 public class ReportService {
-    private final ApplicationComparator comparator=new ApplicationComparator();
-
-    public Optional<ReportDto> doCompetition(List<Application> applicationList, int plan) throws Exception, ServiceException {
-        if(!applicationList.isEmpty()) {
-            Collections.sort(applicationList,comparator);
+    public Optional<ReportDto> doCompetition(List<Application> applicationList, int plan, int page, int total, ApplicationComparator comparator) throws Exception, ServiceException {
+        if (!applicationList.isEmpty()) {
+            Collections.sort(applicationList, comparator);
             Collections.reverse(applicationList);
             Map<Application, Boolean> applicationMap = new LinkedHashMap<Application, Boolean>();
+            List<Boolean> results = new LinkedList<>();
             for (Application i : applicationList) {
-                if(plan>0){
-                applicationMap.put(i,true);
-                plan--;
-            }
-                else {
-                applicationMap.put(i,false);
+                if (plan > 0) {
+                    results.add(true);
+                    plan--;
+                } else {
+                    results.add(false);
                 }
             }
+            for(int i=page;i<total&&i<applicationList.size();i++){
+                applicationMap.put(applicationList.get(i),results.get(i));
+            }
             return Optional.of(new ReportDto(applicationMap));
-        }
-        else {
+        } else {
             return Optional.empty();
         }
     }

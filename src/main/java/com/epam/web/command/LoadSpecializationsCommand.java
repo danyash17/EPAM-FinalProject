@@ -8,6 +8,8 @@ import com.epam.web.service.FacultyService;
 import com.epam.web.service.ImageService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class LoadSpecializationsCommand implements Command {
+    private final Logger LOGGER = LogManager.getLogger(LoadSpecializationsCommand.class);
     private final FacultyService facultyService;
     private final SpecializationService specializationService;
     private final ImageService imageService;
@@ -32,9 +35,10 @@ public class LoadSpecializationsCommand implements Command {
         int page = Integer.parseInt(request.getParameter("page"));
         int total = Integer.parseInt(request.getParameter("specializationsPerPage"));
         List<Specialization> specializationList = specializationService.getLimitedSpecializations(facultyId, (page - 1) * total, total);
-        List<SpecializationImage> imageList = imageService.getLimitedSpecializationImages(facultyId);
+        List<SpecializationImage> imageList = imageService.getSpecializationImages(facultyId);
         LinkedHashMap<Specialization, SpecializationImage> specializationMap = getMap(specializationList, imageList);
         if (specializationMap.isEmpty()) {
+            LOGGER.warn("Critical images error");
             request.getSession().setAttribute("reportMessage", "Images error");
             return CommandResult.forward("/controller?command=errorPage");
         }
@@ -49,6 +53,7 @@ public class LoadSpecializationsCommand implements Command {
             faculty=optionalFaculty.get();
             facultyImage= getFacultyImage(optionalFaculty.get());
             if(facultyImage==null){
+                LOGGER.warn("Critical images error");
                 request.getSession().setAttribute("reportMessage", "Images error");
                 return CommandResult.forward("/controller?command=errorPage");
             }
@@ -95,7 +100,7 @@ public class LoadSpecializationsCommand implements Command {
     }
 
     private FacultyImage getFacultyImage(Faculty faculty) throws ServiceException, Exception {
-        List<FacultyImage> facultyImageList = imageService.getLimitedFacultyImages();
+        List<FacultyImage> facultyImageList = imageService.getFacultyImages();
         FacultyImage image = null;
         int id = faculty.getId();
         for (int j = 0; j < facultyImageList.size(); j++) {

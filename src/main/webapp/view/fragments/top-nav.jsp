@@ -11,7 +11,9 @@
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
 <html lang="${sessionScope.lang}">
+<body>
 <head>
+    <meta http-equiv="Content-Type" content="text/htmL; charset=UTF-8">
     <link rel="stylesheet" href="../../static/pagestyle.css">
 </head>
 <div class="top">
@@ -44,4 +46,5 @@
        href="${pageContext.request.contextPath}/controller?command=loadMain&page=1&facultiesPerPage=3"><fmt:message
             key="local.navbar.home"/></a>
 </div>
+</body>
 </html>

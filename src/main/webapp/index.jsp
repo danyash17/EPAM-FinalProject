@@ -19,16 +19,16 @@
         </h1>
     </div>
     <div class="index-login-form">
-    <form action="${pageContext.request.contextPath}/controller">
+    <form action="${pageContext.request.contextPath}/controller" method="post">
         <input type="hidden" name="command" value="login">
         <label>
             <fmt:message key="local.index.login" var="login"/>
-            <input type="text" name="login" placeholder="${login}">
+            <input type="text" name="login" placeholder="${login}"  maxlength="50" minlength="4">
         </label>
         <br>
         <label>
             <fmt:message key="local.index.password" var="pass"/>
-            <input type="password" name="password" placeholder="${pass}">
+            <input type="password" name="password" placeholder="${pass}"  maxlength="50" minlength="4">
         </label>
         <br>
         <fmt:message key="local.index.authorize" var="auth"/>

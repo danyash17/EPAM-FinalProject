@@ -14,8 +14,8 @@
 <jsp:include page="fragments/top-nav.jsp"/>
 <div class="main-faculties"><fmt:message key="local.main.faculties"/></div>
 <div class="main-table">
-    <c:set var="count" value="1" scope="page"/>
     <c:forEach var="faculty" items="${facultyMap}">
+        <c:set var="currentFaculty" value="${faculty}" scope="session"/>
         <table class="pagination-table">
             <tr>
                 <th colspan="3">

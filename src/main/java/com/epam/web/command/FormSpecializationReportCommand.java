@@ -1,8 +1,8 @@
 package com.epam.web.command;
 
 import com.epam.web.comparator.ApplicationComparator;
-import com.epam.web.entity.Application;
 import com.epam.web.dto.ReportDto;
+import com.epam.web.entity.Application;
 import com.epam.web.entity.Specialization;
 import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ReportService;

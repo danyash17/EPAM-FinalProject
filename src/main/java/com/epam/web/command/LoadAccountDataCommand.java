@@ -21,11 +21,13 @@ public class LoadAccountDataCommand implements Command {
     private final ApplicationService applicationService;
     private final ApplicationComparator comparator;
     private final SpecializationService specializationService;
+    private final String loadAtPage;
 
-    public LoadAccountDataCommand(ApplicationService service, ApplicationComparator comparator, SpecializationService specializationService) {
+    public LoadAccountDataCommand(ApplicationService service, ApplicationComparator comparator, SpecializationService specializationService, String loadAtPage) {
         this.applicationService = service;
         this.comparator = comparator;
         this.specializationService = specializationService;
+        this.loadAtPage = loadAtPage;
     }
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
@@ -57,7 +59,7 @@ public class LoadAccountDataCommand implements Command {
             request.getSession().setAttribute("listPosition",competitionParticipants.indexOf(presentApplication));
             request.getSession().setAttribute("competitionParticipants",competitionParticipants.size());
             request.getSession().setAttribute("specializationPlan",specialization.get().getPlan());
-            return CommandResult.forward("/controller?command=accountPage");
+            return CommandResult.forward("/controller?command="+loadAtPage);
         }
         else {
             LOGGER.warn("Account data error");

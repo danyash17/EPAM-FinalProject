@@ -35,9 +35,12 @@
                     <q>${specialization.key.description}</q>
                     <c:if test="${role=='ENROLEE'}">
                         <form action="${pageContext.request.contextPath}/controller" >
+                            <c:set var="specId" value="${specialization.key.id}"/>
                             <input type="hidden" name="command" value="register">
-                            <input type="hidden" name="registrationId" value="${specialization.key.id}" >
-                            <button class="button"><fmt:message key="local.faculty.registerbutton"/></button>
+                            <input type="hidden" name="registrationId" value="${specId}" >
+                            <c:if test="${specialization_id!=specId}"><button class="button"><fmt:message key="local.faculty.registerbutton"/></button></c:if>
+                            <c:if test="${specialization_id==specId}"><button class="disabled-button" disabled><fmt:message key="local.faculty.alreadyregisteredbutton"/></button></c:if>
+
                         </form>
                     </c:if>
                     <c:if test="${role=='ADMIN'}">

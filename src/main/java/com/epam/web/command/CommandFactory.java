@@ -22,9 +22,9 @@ public class CommandFactory {
             case Commands.ERROR_PAGE:
                 return new ShowPageCommand(Paths.ERROR);
             case Commands.LOAD_ACCOUNT:
-                return new LoadAccountDataCommand(new ApplicationService(new DaoHelperFactory()), new ApplicationComparator(), new SpecializationService(new DaoHelperFactory()));
+                return new LoadAccountDataCommand(new ApplicationService(new DaoHelperFactory()), new ApplicationComparator(), new SpecializationService(new DaoHelperFactory()), Commands.ACCOUNT_PAGE);
             case Commands.LOAD_ADMIN_ACCOUNT:
-                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "accountData");
+                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), Commands.ACCOUNT_PAGE);
             case Commands.REPORT_PAGE:
                 return new ShowPageCommand(Paths.REPORT);
             case Commands.LOGIN_PAGE:
@@ -32,8 +32,10 @@ public class CommandFactory {
             case Commands.SPECIALIZATION_REGISTER:
                 return new UpdateSpecializationCommand(new ApplicationService(new DaoHelperFactory()), new ReportService(), new SpecializationService(new DaoHelperFactory()));
             case Commands.LOAD_MAIN:
-                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "mainPage");
+                return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), Commands.MAIN_PAGE);
             case Commands.LOAD_FACULTY:
+                return new LoadAccountDataCommand(new ApplicationService(new DaoHelperFactory()),new ApplicationComparator(),new SpecializationService(new DaoHelperFactory()),Commands.LOAD_SPECIALIZATIONS);
+            case Commands.LOAD_SPECIALIZATIONS:
                 return new LoadSpecializationsCommand(new FacultyService(new DaoHelperFactory()), new SpecializationService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()));
             case Commands.LOAD_REPORT:
                 return new FormSpecializationReportCommand(new ReportService(),new ApplicationService(new DaoHelperFactory()),new SpecializationService(new DaoHelperFactory()));

@@ -1,8 +1,6 @@
 package com.epam.web.dao;
 
 import com.epam.web.connection.ProxyConnection;
-import com.epam.web.entity.Application;
-import com.epam.web.entity.Faculty;
 import com.epam.web.entity.Specialization;
 import com.epam.web.mapper.SpecializationMapper;
 

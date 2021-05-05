@@ -33,4 +33,5 @@ public class Commands {
 
     public static final String CHANGE_LOCALIZATION = "localization";
 
+    public static final String LOAD_SPECIALIZATIONS ="loadSpecializations";
 }

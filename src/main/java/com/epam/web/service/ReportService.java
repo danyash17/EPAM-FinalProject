@@ -1,8 +1,8 @@
 package com.epam.web.service;
 
 import com.epam.web.comparator.ApplicationComparator;
-import com.epam.web.entity.Application;
 import com.epam.web.dto.ReportDto;
+import com.epam.web.entity.Application;
 
 import java.util.*;
 

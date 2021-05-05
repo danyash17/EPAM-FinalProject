@@ -7,7 +7,6 @@ import com.epam.web.dao.FacultyDao;
 import com.epam.web.entity.Faculty;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class FacultyService {

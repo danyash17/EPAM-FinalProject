@@ -93,7 +93,22 @@ input[type=password], select {
     cursor: pointer;
     border-radius: 50%;
 }
-
+.disabled-button{
+    font-family: AG_Futura;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
 .button-round:hover {
     opacity: 1
 }

@@ -1,6 +1,9 @@
 package com.epam.web.service;
 
-import com.epam.web.dao.*;
+import com.epam.web.dao.DaoException;
+import com.epam.web.dao.DaoHelper;
+import com.epam.web.dao.DaoHelperFactory;
+import com.epam.web.dao.ImageDao;
 import com.epam.web.entity.image.FacultyImage;
 import com.epam.web.entity.image.SpecializationImage;
 

@@ -1,5 +1,6 @@
 package com.epam.web.command;
 
+import com.epam.web.comparator.ApplicationComparator;
 import com.epam.web.entity.Application;
 import com.epam.web.entity.Specialization;
 import com.epam.web.entity.UserRole;
@@ -11,15 +12,19 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
-public class ShowAccountDataCommand implements Command {
-    private final Logger LOGGER = LogManager.getLogger(ShowAccountDataCommand.class);
+public class LoadAccountDataCommand implements Command {
+    private final Logger LOGGER = LogManager.getLogger(LoadAccountDataCommand.class);
     private final ApplicationService applicationService;
+    private final ApplicationComparator comparator;
     private final SpecializationService specializationService;
 
-    public ShowAccountDataCommand(ApplicationService service, SpecializationService specializationService) {
+    public LoadAccountDataCommand(ApplicationService service, ApplicationComparator comparator, SpecializationService specializationService) {
         this.applicationService = service;
+        this.comparator = comparator;
         this.specializationService = specializationService;
     }
     @Override
@@ -35,6 +40,9 @@ public class ShowAccountDataCommand implements Command {
             return CommandResult.forward("/controller?command=accountPage");
         }
         if (specialization.isPresent()) {
+            List<Application> competitionParticipants=applicationService.getFullSpecifiedApplicationList(specialization.get().getId());
+            Collections.sort(competitionParticipants,comparator);
+            Collections.reverse(competitionParticipants);
             Application presentApplication = application.get();
             Specialization presentSpecialization=specialization.get();
             request.getSession().setAttribute("country", presentApplication.getCountry());
@@ -46,6 +54,9 @@ public class ShowAccountDataCommand implements Command {
             request.getSession().setAttribute("second_exam", presentApplication.getSecondExam());
             request.getSession().setAttribute("third_exam", presentApplication.getThirdExam());
             request.getSession().setAttribute("grade", presentApplication.getGrade());
+            request.getSession().setAttribute("listPosition",competitionParticipants.indexOf(presentApplication));
+            request.getSession().setAttribute("competitionParticipants",competitionParticipants.size());
+            request.getSession().setAttribute("specializationPlan",specialization.get().getPlan());
             return CommandResult.forward("/controller?command=accountPage");
         }
         else {

@@ -1,5 +1,6 @@
 package com.epam.web.command;
 
+import com.epam.web.comparator.ApplicationComparator;
 import com.epam.web.dao.DaoHelperFactory;
 import com.epam.web.service.*;
 import com.epam.web.validator.AuthentificationValidator;
@@ -21,7 +22,7 @@ public class CommandFactory {
             case Commands.ERROR_PAGE:
                 return new ShowPageCommand(Paths.ERROR);
             case Commands.LOAD_ACCOUNT:
-                return new ShowAccountDataCommand(new ApplicationService(new DaoHelperFactory()), new SpecializationService(new DaoHelperFactory()));
+                return new LoadAccountDataCommand(new ApplicationService(new DaoHelperFactory()), new ApplicationComparator(), new SpecializationService(new DaoHelperFactory()));
             case Commands.LOAD_ADMIN_ACCOUNT:
                 return new LoadFacultiesCommand(new FacultyService(new DaoHelperFactory()), new ImageService(new DaoHelperFactory()), "accountData");
             case Commands.REPORT_PAGE:

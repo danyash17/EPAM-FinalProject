@@ -26,7 +26,8 @@
     <b style="color: white"><fmt:message key="local.account.enrolee.info.medal"/>:</b>  <c:if
         test="${medal==true}">✔</c:if><c:if test="${medal==false}">✘</c:if><br>
     <b style="color: white"><fmt:message key="local.account.enrolee.info.choosedspecialization"/>:</b> ${specialization}
-    <c:if test="${specialization_id==null}">Not choosed</c:if><br>
+    <c:if test="${specialization_id==null}">Not choosed</c:if>
+    <br>
 </pre>
     <pre class="account-info-grades">
     <b style="color: white"><fmt:message key="local.account.enrolee.info.firstexam"/>:</b> ${first_exam}<br>
@@ -34,8 +35,17 @@
     <b style="color: white"><fmt:message key="local.account.enrolee.info.thirdexam"/>:</b> ${third_exam}<br>
     <b style="color: white"><fmt:message key="local.account.enrolee.info.grade"/>:</b> ${grade}<br>
     <b style="color: white"><fmt:message
-            key="local.account.enrolee.info.totalgrade"/>:</b> ${grade+first_exam+second_exam+third_exam}<br>
+            key="local.account.enrolee.info.totalgrade"/>:</b> ${grade+first_exam+second_exam+third_exam}
 </pre>
+    <c:if test="${(listPosition+1)<=specializationPlan}">
+    <c:set var="participation" value="participation-winning"/>
+    </c:if>
+    <c:if test="${(listPosition+1)>specializationPlan}">
+    <c:set var="participation" value="participation-loosing"/>
+    </c:if>
+    <div class="account-info-position">You are currently at <b class="${participation}">${listPosition+1}</b> position
+        of <b class="participation-amount">${competitionParticipants}</b>
+        of ${specialization} specialization(Plan - <b class="participation-amount">${specializationPlan}</b>)</div>
     </c:if>
     <c:if test="${role=='ADMIN'}">
         <img src="/images/admin.png" width="300" height="300" align="left">

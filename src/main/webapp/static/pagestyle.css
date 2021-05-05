@@ -337,7 +337,28 @@ input[type=password], select {
     color: black;
     width: 50%;
 }
-
+.account-info-position{
+    padding: 10px;
+    margin-bottom:6px;
+    background:white;
+    border-spacing: 0;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+}
+.participation-winning{
+    font-size: 23px;
+    color: #2ea832;
+}
+.participation-loosing{
+    font-size: 23px;
+    color: red;
+}
+.participation-amount{
+    font-size: 23px;
+}
 .account-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

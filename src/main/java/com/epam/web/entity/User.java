@@ -1,5 +1,8 @@
 package com.epam.web.entity;
 
+import com.epam.web.entity.enums.SexEnum;
+import com.epam.web.entity.enums.UserRole;
+
 public class User implements Entity {
 
     private Integer id;

@@ -1,6 +1,6 @@
 package com.epam.web.filter;
 
-import com.epam.web.command.Commands;
+import com.epam.web.command.util.Commands;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class AuthorizationFilter implements Filter {
     private FilterConfig filterConfig;
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.filterConfig = filterConfig;
@@ -17,10 +18,9 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         ServletContext context = filterConfig.getServletContext();
-        if (httpServletRequest.getSession().getAttribute("authorized")!=null||servletRequest.getParameter("command").equals(Commands.LOGIN)) {
+        if (httpServletRequest.getSession().getAttribute("authorized") != null || servletRequest.getParameter("command").equals(Commands.LOGIN)) {
             filterChain.doFilter(servletRequest, servletResponse);
-        }
-        else {
+        } else {
             RequestDispatcher dispatcher = context.getRequestDispatcher("/index.jsp");
             dispatcher.forward(servletRequest, servletResponse);
         }
@@ -28,6 +28,6 @@ public class AuthorizationFilter implements Filter {
 
     @Override
     public void destroy() {
-        filterConfig=null;
+        filterConfig = null;
     }
 }

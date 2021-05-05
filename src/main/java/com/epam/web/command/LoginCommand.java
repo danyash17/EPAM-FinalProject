@@ -25,7 +25,7 @@ public class LoginCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        if(!validator.validate(login)||!validator.validate(password)){
+        if (!validator.validate(login) || !validator.validate(password)) {
             request.getSession().setAttribute("errorMessage", "Login or password is invalid");
             return CommandResult.redirect("/controller?command=loginPage");
         }
@@ -37,11 +37,11 @@ public class LoginCommand implements Command {
             request.getSession().setAttribute("surname", presentUser.getSurname());
             request.getSession().setAttribute("sex", presentUser.getSex());
             request.getSession().setAttribute("role", presentUser.getRole());
-            request.getSession().setAttribute("authorized",true);
-            response.setHeader("Cache-Control","no -cache, no -store, must -revalidate");
-            response.addHeader("Pragma","no -cache");
-            response.setDateHeader ("Expires", 0) ;
-            LOGGER.info("User "+presentUser.getName()+" "+presentUser.getSurname()+" logged in");
+            request.getSession().setAttribute("authorized", true);
+            response.setHeader("Cache-Control", "no -cache, no -store, must -revalidate");
+            response.addHeader("Pragma", "no -cache");
+            response.setDateHeader("Expires", 0);
+            LOGGER.info("User " + presentUser.getName() + " " + presentUser.getSurname() + " logged in");
             return CommandResult.forward("/controller?command=loadMain&page=1&facultiesPerPage=3");
         } else {
             LOGGER.warn("User login error");

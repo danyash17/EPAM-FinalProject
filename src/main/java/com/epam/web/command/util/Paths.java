@@ -1,4 +1,4 @@
-package com.epam.web.command;
+package com.epam.web.command.util;
 
 public class Paths {
     public static String MAIN = "/view/main.jsp";

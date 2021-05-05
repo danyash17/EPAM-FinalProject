@@ -29,34 +29,34 @@ public class UpdateSpecializationCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException{
-        Integer previousSpecializationId=(Integer) request.getSession().getAttribute("specialization_id");
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
+        Integer previousSpecializationId = (Integer) request.getSession().getAttribute("specialization_id");
         Integer newSpecializationId = Integer.parseInt(request.getParameter("registrationId"));
         Integer id = (Integer) request.getSession().getAttribute("id");
         applicationService.updateSpecialization(id, newSpecializationId);
-        Optional<Specialization> newSpecialization=specializationService.getSpecialization(newSpecializationId);
-        Optional<Specialization> previousSpecialization=specializationService.getSpecialization(previousSpecializationId);
+        Optional<Specialization> newSpecialization = specializationService.getSpecialization(newSpecializationId);
+        Optional<Specialization> previousSpecialization = specializationService.getSpecialization(previousSpecializationId);
         Integer planForNewSpecialization;
         Integer planForPreviousSpecialization;
-        if (newSpecialization.isPresent()&&previousSpecialization.isPresent()){
-            planForNewSpecialization=newSpecialization.get().getPlan();
-            planForPreviousSpecialization=previousSpecialization.get().getPlan();
-        }
-        else {
+        if (newSpecialization.isPresent() && previousSpecialization.isPresent()) {
+            planForNewSpecialization = newSpecialization.get().getPlan();
+            planForPreviousSpecialization = previousSpecialization.get().getPlan();
+        } else {
             LOGGER.warn("Specialization is not found in DB");
             request.getSession().setAttribute("errorMessage", "There is no data about specialization in database");
             return CommandResult.redirect("/controller?command=errorPage");
         }
-        update(previousSpecializationId,planForPreviousSpecialization);
-        update(newSpecializationId,planForNewSpecialization);
+        update(previousSpecializationId, planForPreviousSpecialization);
+        update(newSpecializationId, planForNewSpecialization);
         return CommandResult.forward("/controller?command=accountData");
     }
-    private void update(Integer specializationId,Integer plan) throws ServiceException {
-        List<Application> fullList=applicationService.getFullSpecifiedApplicationList(specializationId);
-        Optional<ReportDto> fullAppliedEnrolees=reportService.doCompetition(fullList,plan,0, fullList.size(),new ApplicationComparator());
-        fullAppliedEnrolees.get().getApplicationMap().forEach((key, value)-> {
+
+    private void update(Integer specializationId, Integer plan) throws ServiceException {
+        List<Application> fullList = applicationService.getFullSpecifiedApplicationList(specializationId);
+        Optional<ReportDto> fullAppliedEnrolees = reportService.doCompetition(fullList, plan, 0, fullList.size(), new ApplicationComparator());
+        fullAppliedEnrolees.get().getApplicationMap().forEach((key, value) -> {
             try {
-                applicationService.updateStatus(key.getId(),value);
+                applicationService.updateStatus(key.getId(), value);
             } catch (ServiceException e) {
                 e.printStackTrace();
             }

@@ -13,7 +13,7 @@
 <fmt:setBundle basename="local"/>
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Faculty</title>
+    <title><fmt:message key="local.navbar.faculty"/></title>
     <link rel="stylesheet" href="../../static/pagestyle.css">
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
@@ -37,9 +37,14 @@
                         <form action="${pageContext.request.contextPath}/controller" method="post">
                             <c:set var="specId" value="${specialization.key.id}"/>
                             <input type="hidden" name="command" value="register">
-                            <input type="hidden" name="registrationId" value="${specId}" >
-                            <c:if test="${specialization_id!=specId}"><button class="button"><fmt:message key="local.faculty.registerbutton"/></button></c:if>
-                            <c:if test="${specialization_id==specId}"><button class="disabled-button" disabled><fmt:message key="local.faculty.alreadyregisteredbutton"/></button></c:if>
+                            <input type="hidden" name="registrationId" value="${specId}">
+                            <c:if test="${specialization_id!=specId}">
+                                <button class="button"><fmt:message key="local.faculty.registerbutton"/></button>
+                            </c:if>
+                            <c:if test="${specialization_id==specId}">
+                                <button class="disabled-button" disabled><fmt:message
+                                        key="local.faculty.alreadyregisteredbutton"/></button>
+                            </c:if>
 
                         </form>
                     </c:if>
@@ -49,7 +54,8 @@
                             <input type="hidden" name="page" value="1">
                             <input type="hidden" name="applicantsPerPage" value="5">
                             <input type="hidden" name="reportingSpecializationId" value="${specialization.key.id}">
-                            <button class="button">${specialization.key.specialization} <fmt:message key="local.account.admin.report"/></button>
+                            <button class="button">${specialization.key.specialization} <fmt:message
+                                    key="local.account.admin.report"/></button>
                         </form>
                     </c:if>
                 </th>

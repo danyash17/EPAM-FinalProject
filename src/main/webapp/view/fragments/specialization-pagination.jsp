@@ -21,14 +21,18 @@
         <input type="hidden" name="page" value="${param.page-1}">
         <input type="hidden" name="currentFaculty" value="${param.currentFaculty}">
         <input type="hidden" name="specializationsPerPage" value="${param.specializationsPerPage}">
-        <c:if test="${param.page>1}"><button class="button-round"><</button></c:if>
+        <c:if test="${param.page>1}">
+            <button class="button-round"><</button>
+        </c:if>
     </form>
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="loadFaculty">
         <input type="hidden" name="page" value="${param.page+1}">
         <input type="hidden" name="currentFaculty" value="${param.currentFaculty}">
         <input type="hidden" name="specializationsPerPage" value="${param.specializationsPerPage}">
-        <c:if test="${hasNext}"><button class="button-round">></button></c:if>
+        <c:if test="${hasNext}">
+            <button class="button-round">></button>
+        </c:if>
     </form>
 </section>
 </body>

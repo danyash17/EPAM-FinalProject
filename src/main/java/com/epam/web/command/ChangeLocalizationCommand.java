@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 public class ChangeLocalizationCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-        String language=request.getParameter("sessionLocale");
-        request.getSession().setAttribute("lang",language);
+        String language = request.getParameter("sessionLocale");
+        request.getSession().setAttribute("lang", language);
         return CommandResult.redirect("/controller?command=loadMain&page=1&facultiesPerPage=3");
     }
 }

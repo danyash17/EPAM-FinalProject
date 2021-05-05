@@ -3,7 +3,7 @@ package com.epam.web.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ShowPageCommand implements Command{
+public class ShowPageCommand implements Command {
     private final String page;
 
     public ShowPageCommand(final String page) {

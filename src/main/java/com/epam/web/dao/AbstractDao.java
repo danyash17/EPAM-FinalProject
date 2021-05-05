@@ -27,16 +27,16 @@ public abstract class AbstractDao<T extends Entity> implements Dao {
         this.tableName = tableName;
     }
 
-    private PreparedStatement createStatement(String query, Object ...params) throws SQLException {
+    private PreparedStatement createStatement(String query, Object... params) throws SQLException {
 
         PreparedStatement statement = connection.prepareStatement(query);
         for (int i = 0; i < params.length; ++i) {
-            statement.setObject(i+1 , params[i]);
+            statement.setObject(i + 1, params[i]);
         }
         return statement;
     }
 
-    protected List<T> executeQuery(String query, Object ...params) throws DaoException {
+    protected List<T> executeQuery(String query, Object... params) throws DaoException {
 
         try (PreparedStatement statement = createStatement(query, params);
              ResultSet resultSet = statement.executeQuery()) {
@@ -50,11 +50,11 @@ public abstract class AbstractDao<T extends Entity> implements Dao {
             return entities;
 
         } catch (SQLException e) {
-            throw new DaoException(e,e.getMessage());
+            throw new DaoException(e, e.getMessage());
         }
     }
 
-    protected Optional<T> executeSingleResultQuery(String query, Object ...params) throws DaoException {
+    protected Optional<T> executeSingleResultQuery(String query, Object... params) throws DaoException {
 
         List<T> entities = executeQuery(query, params);
 
@@ -69,13 +69,13 @@ public abstract class AbstractDao<T extends Entity> implements Dao {
         return Optional.empty();
     }
 
-    protected void executeUpdate(String query, Object ...params) throws DaoException {
+    protected void executeUpdate(String query, Object... params) throws DaoException {
 
         try (PreparedStatement statement = createStatement(query, params)) {
             statement.executeUpdate();
 
         } catch (SQLException e) {
-            throw new DaoException(e,e.getMessage());
+            throw new DaoException(e, e.getMessage());
         }
     }
 

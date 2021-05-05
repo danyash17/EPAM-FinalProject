@@ -1,22 +1,12 @@
 package com.epam.web.service;
 
 import com.epam.web.comparator.ApplicationComparator;
-import com.epam.web.dao.DaoHelper;
-import com.epam.web.dao.DaoHelperFactory;
-import com.epam.web.dao.FacultyDao;
-import com.epam.web.dao.SpecializationDao;
 import com.epam.web.dto.ReportDto;
 import com.epam.web.entity.Application;
-import com.epam.web.entity.Faculty;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
-
-import com.epam.web.entity.SexEnum;
-import com.epam.web.entity.Specialization;
+import com.epam.web.entity.enums.SexEnum;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.*;
 

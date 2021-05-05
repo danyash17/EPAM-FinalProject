@@ -11,13 +11,13 @@
 <fmt:setBundle basename="local"/>
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Error</title>
+    <title><fmt:message key="local.error.errormessage"/></title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>
 <body>
 <div style="color:#FF0000;">
     <h1>
-    ${errorMessage}
+        ${errorMessage}
     </h1>
 </div>
 </body>

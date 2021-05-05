@@ -103,8 +103,8 @@ public class ConnectionPool {
         try {
             connectionsSemaphore.acquire();
             LOCK.lock();
-            Connection connection=availableConnections.poll();
-            ProxyConnection proxyConnection = new ProxyConnection(connection,this);
+            Connection connection = availableConnections.poll();
+            ProxyConnection proxyConnection = new ProxyConnection(connection, this);
             activeConnections.add(proxyConnection);
 
             return proxyConnection;

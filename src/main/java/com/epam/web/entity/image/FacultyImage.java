@@ -1,6 +1,6 @@
 package com.epam.web.entity.image;
 
-public class FacultyImage extends Image{
+public class FacultyImage extends Image {
     private final Integer facultyId;
 
     public FacultyImage(String path, Integer facultyId) {

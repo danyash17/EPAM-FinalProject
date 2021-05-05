@@ -50,16 +50,16 @@ public class LoadSpecializationsCommand implements Command {
             request.getSession().setAttribute("reportMessage", "Faculty not found");
             return CommandResult.forward("/controller?command=errorPage");
         } else {
-            faculty=optionalFaculty.get();
-            facultyImage= getFacultyImage(optionalFaculty.get());
-            if(facultyImage==null){
+            faculty = optionalFaculty.get();
+            facultyImage = getFacultyImage(optionalFaculty.get());
+            if (facultyImage == null) {
                 LOGGER.warn("Critical images error");
                 request.getSession().setAttribute("reportMessage", "Images error");
                 return CommandResult.forward("/controller?command=errorPage");
             }
         }
-        request.getSession().setAttribute("selectedFaculty",faculty);
-        request.getSession().setAttribute("selectedFacultyImage",facultyImage);
+        request.getSession().setAttribute("selectedFaculty", faculty);
+        request.getSession().setAttribute("selectedFacultyImage", facultyImage);
         request.getSession().setAttribute("hasNext", !nextSpecializationList.isEmpty());
         request.getSession().setAttribute("specializationMap", specializationMap);
         return CommandResult.forward("/controller?command=facultyPage&page=" + page);

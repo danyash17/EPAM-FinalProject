@@ -1,4 +1,4 @@
-package com.epam.web.command;
+package com.epam.web.command.util;
 
 public class Commands {
     public static final String MAIN_PAGE = "mainPage";

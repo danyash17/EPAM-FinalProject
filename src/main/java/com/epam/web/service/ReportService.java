@@ -21,8 +21,8 @@ public class ReportService {
                     results.add(false);
                 }
             }
-            for(int i=page;i<total&&i<applicationList.size();i++){
-                applicationMap.put(applicationList.get(i),results.get(i));
+            for (int i = page; i < total && i < applicationList.size(); i++) {
+                applicationMap.put(applicationList.get(i), results.get(i));
             }
             return Optional.of(new ReportDto(applicationMap));
         } else {

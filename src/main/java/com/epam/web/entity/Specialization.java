@@ -32,5 +32,7 @@ public class Specialization implements Entity {
         return plan;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 }

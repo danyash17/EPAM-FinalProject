@@ -6,6 +6,7 @@ public class DaoException extends Exception {
 
     public DaoException(SQLException e, String message) {
     }
+
     public DaoException(String message) {
     }
 }

@@ -1,8 +1,10 @@
 package com.epam.web.entity;
 
+import com.epam.web.entity.enums.SexEnum;
+
 import java.util.Objects;
 
-public class Application implements Entity{
+public class Application implements Entity {
     private final Integer id;
     private final String name;
     private final String surname;
@@ -44,9 +46,13 @@ public class Application implements Entity{
         return surname;
     }
 
-    public SexEnum getSex() { return sex; }
+    public SexEnum getSex() {
+        return sex;
+    }
 
-    public String getCountry() { return country; }
+    public String getCountry() {
+        return country;
+    }
 
     public String getCity() {
         return city;
@@ -76,7 +82,9 @@ public class Application implements Entity{
         return grade;
     }
 
-    public int getTotalGrade(){ return firstExam+secondExam+thirdExam+grade; }
+    public int getTotalGrade() {
+        return firstExam + secondExam + thirdExam + grade;
+    }
 
     @Override
     public boolean equals(Object o) {

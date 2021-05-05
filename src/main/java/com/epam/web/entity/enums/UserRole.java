@@ -1,4 +1,4 @@
-package com.epam.web.entity;
+package com.epam.web.entity.enums;
 
 public enum UserRole {
     ENROLEE,

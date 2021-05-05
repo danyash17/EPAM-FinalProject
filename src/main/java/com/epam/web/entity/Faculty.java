@@ -1,12 +1,13 @@
 package com.epam.web.entity;
 
-public class Faculty implements Entity{
+public class Faculty implements Entity {
     private final Integer facultyId;
     private final String faculty;
     private final String firstExam;
     private final String secondExam;
     private final String thirdExam;
     private final String description;
+
     @Override
     public Integer getId() {
         return facultyId;
@@ -41,5 +42,7 @@ public class Faculty implements Entity{
         return thirdExam;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 }

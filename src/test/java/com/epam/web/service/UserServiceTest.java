@@ -2,21 +2,19 @@ package com.epam.web.service;
 
 
 import com.epam.web.dao.*;
-import com.epam.web.entity.Application;
-import com.epam.web.entity.SexEnum;
+import com.epam.web.dao.helper.DaoHelper;
+import com.epam.web.dao.helper.DaoHelperFactory;
+import com.epam.web.entity.enums.SexEnum;
 
 import static org.junit.Assert.*;
-import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 import com.epam.web.entity.User;
-import com.epam.web.entity.UserRole;
+import com.epam.web.entity.enums.UserRole;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 public class UserServiceTest {
     private final User

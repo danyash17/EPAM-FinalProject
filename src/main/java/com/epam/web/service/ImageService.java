@@ -1,8 +1,8 @@
 package com.epam.web.service;
 
 import com.epam.web.dao.DaoException;
-import com.epam.web.dao.DaoHelper;
-import com.epam.web.dao.DaoHelperFactory;
+import com.epam.web.dao.helper.DaoHelper;
+import com.epam.web.dao.helper.DaoHelperFactory;
 import com.epam.web.dao.ImageDao;
 import com.epam.web.entity.image.FacultyImage;
 import com.epam.web.entity.image.SpecializationImage;
@@ -10,7 +10,7 @@ import com.epam.web.entity.image.SpecializationImage;
 import java.util.List;
 import java.util.Optional;
 
-public class ImageService{
+public class ImageService {
     private final DaoHelperFactory factory;
 
     public ImageService(DaoHelperFactory factory) {
@@ -25,6 +25,7 @@ public class ImageService{
             throw new ServiceException(e, e.getMessage());
         }
     }
+
     public List<SpecializationImage> getSpecializationImages(Integer facultyId) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();
@@ -42,6 +43,7 @@ public class ImageService{
             throw new ServiceException(e, e.getMessage());
         }
     }
+
     public Optional<SpecializationImage> getSpecializationImage(Integer id) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();

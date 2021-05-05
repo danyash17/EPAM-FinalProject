@@ -33,30 +33,29 @@ public class FormSpecializationReportCommand implements Command {
         int specializationId = Integer.parseInt(request.getParameter("reportingSpecializationId"));
         int page = Integer.parseInt(request.getParameter("page"));
         int total = Integer.parseInt(request.getParameter("applicantsPerPage"));
-        Optional<Specialization> specialization=specializationService.getSpecialization(specializationId);
+        Optional<Specialization> specialization = specializationService.getSpecialization(specializationId);
         Integer plan;
-        if (specialization.isPresent()){
-            plan=specialization.get().getPlan();
-        }
-        else {
+        if (specialization.isPresent()) {
+            plan = specialization.get().getPlan();
+        } else {
             LOGGER.warn("Specialization is not found in DB");
             request.getSession().setAttribute("reportMessage", "There is no data about specialization in database");
             return CommandResult.forward("/controller?command=reportPage");
         }
-        List<Application> fullList=applicationService.getFullSpecifiedApplicationList(specializationId);
-        List<Application> nextApplicationsList = applicationService.getLimitedSpecifiedApplicationList(specializationId,page * total, total);
-        Optional<ReportDto> fullAppliedEnrolees=reportService.doCompetition(fullList,plan,0, fullList.size(),new ApplicationComparator());
-        Optional<ReportDto> appliedEnrolees=reportService.doCompetition(fullList,plan,(page - 1) * total, page*total,new ApplicationComparator());
+        List<Application> fullList = applicationService.getFullSpecifiedApplicationList(specializationId);
+        List<Application> nextApplicationsList = applicationService.getLimitedSpecifiedApplicationList(specializationId, page * total, total);
+        Optional<ReportDto> fullAppliedEnrolees = reportService.doCompetition(fullList, plan, 0, fullList.size(), new ApplicationComparator());
+        Optional<ReportDto> appliedEnrolees = reportService.doCompetition(fullList, plan, (page - 1) * total, page * total, new ApplicationComparator());
         if (fullAppliedEnrolees.isPresent()) {
-            fullAppliedEnrolees.get().getApplicationMap().forEach((key, value)-> {
+            fullAppliedEnrolees.get().getApplicationMap().forEach((key, value) -> {
                 try {
-                    applicationService.updateStatus(key.getId(),value);
+                    applicationService.updateStatus(key.getId(), value);
                 } catch (ServiceException e) {
                     e.printStackTrace();
                 }
             });
-            request.setAttribute("specializationName",specialization.get().getSpecialization());
-            request.setAttribute("reportIsFormed",true);
+            request.setAttribute("specializationName", specialization.get().getSpecialization());
+            request.setAttribute("reportIsFormed", true);
             request.getSession().setAttribute("hasNext", !nextApplicationsList.isEmpty());
             request.setAttribute("appliedEnroleesMap", appliedEnrolees.get().getApplicationMap());
             return CommandResult.forward("/controller?command=reportPage");

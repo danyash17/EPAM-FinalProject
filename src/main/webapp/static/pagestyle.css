@@ -93,7 +93,8 @@ input[type=password], select {
     cursor: pointer;
     border-radius: 50%;
 }
-.disabled-button{
+
+.disabled-button {
     font-family: AG_Futura;
     background-color: red;
     border: none;
@@ -109,6 +110,7 @@ input[type=password], select {
     cursor: pointer;
     border-radius: 12px;
 }
+
 .button-round:hover {
     opacity: 1
 }
@@ -130,6 +132,7 @@ input[type=password], select {
     cursor: pointer;
     border-radius: 50%;
 }
+
 /*top-nav.jsp*/
 .top {
     background-color: #63acb5;
@@ -261,12 +264,12 @@ input[type=password], select {
 
 .pagination-table {
     padding: 10px;
-    margin-bottom:6px;
-    background:white;
-    width:33%;
+    margin-bottom: 6px;
+    background: white;
+    width: 33%;
     border-spacing: 0;
     border-radius: 20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .main-threefacs {
@@ -352,28 +355,33 @@ input[type=password], select {
     color: black;
     width: 50%;
 }
-.account-info-position{
+
+.account-info-position {
     padding: 10px;
-    margin-bottom:6px;
-    background:white;
+    margin-bottom: 6px;
+    background: white;
     border-spacing: 0;
     border-radius: 20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     font-size: 19px;
     font-family: AG_Futura;
     color: black;
 }
-.participation-winning{
+
+.participation-winning {
     font-size: 23px;
     color: #2ea832;
 }
-.participation-loosing{
+
+.participation-loosing {
     font-size: 23px;
     color: red;
 }
-.participation-amount{
+
+.participation-amount {
     font-size: 23px;
 }
+
 .account-row {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -450,7 +458,7 @@ input[type=password], select {
     color: red;
 }
 
-.pagination{
+.pagination {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

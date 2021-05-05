@@ -32,26 +32,27 @@ public class LoadFacultiesCommand implements Command {
         int total = Integer.parseInt(request.getParameter("facultiesPerPage"));
         List<Faculty> facultyList = facultyService.getLimitedFaculties((page - 1) * total, total);
         List<FacultyImage> imageList = imageService.getFacultyImages();
-        LinkedHashMap<Faculty,FacultyImage> facultyMap=getMap(facultyList,imageList);
+        LinkedHashMap<Faculty, FacultyImage> facultyMap = getMap(facultyList, imageList);
         List<Faculty> nextFacultyList = facultyService.getLimitedFaculties(page * total, total);
-        if(facultyMap.isEmpty()){
+        if (facultyMap.isEmpty()) {
             LOGGER.warn("Critical images error");
             request.getSession().setAttribute("reportMessage", "Images error");
             return CommandResult.forward("/controller?command=errorPage");
         }
         request.getSession().setAttribute("hasNext", !nextFacultyList.isEmpty());
         request.getSession().setAttribute("facultyMap", facultyMap);
-        return CommandResult.forward("/controller?command="+loadAtPage+"&page=" + page);
+        return CommandResult.forward("/controller?command=" + loadAtPage + "&page=" + page);
     }
-    private LinkedHashMap<Faculty,FacultyImage> getMap(List<Faculty> facultyList,List<FacultyImage> imageList) throws ServiceException {
-        LinkedHashMap<Faculty,FacultyImage> facultyMap=new LinkedHashMap<>();
-        if(!imageList.isEmpty()) {
+
+    private LinkedHashMap<Faculty, FacultyImage> getMap(List<Faculty> facultyList, List<FacultyImage> imageList) throws ServiceException {
+        LinkedHashMap<Faculty, FacultyImage> facultyMap = new LinkedHashMap<>();
+        if (!imageList.isEmpty()) {
             for (int i = 0; i < facultyList.size(); i++) {
-                FacultyImage image=null;
-                int id=facultyList.get(i).getId();
-                for(int j=0;j<imageList.size();j++){
-                    if(imageList.get(j).getId().equals(id)){
-                        image=imageList.get(j);
+                FacultyImage image = null;
+                int id = facultyList.get(i).getId();
+                for (int j = 0; j < imageList.size(); j++) {
+                    if (imageList.get(j).getId().equals(id)) {
+                        image = imageList.get(j);
                         break;
                     }
                 }
@@ -65,14 +66,13 @@ public class LoadFacultiesCommand implements Command {
                 }
                 facultyMap.put(facultyList.get(i), image);
             }
-        }
-        else {
+        } else {
             Optional<FacultyImage> notFoundImage = imageService.getFacultyImage(0);
             if (!notFoundImage.isPresent()) {
                 return null;
             }
-            for (Faculty faculty:facultyList) {
-                facultyMap.put(faculty,notFoundImage.get());
+            for (Faculty faculty : facultyList) {
+                facultyMap.put(faculty, notFoundImage.get());
             }
         }
         return facultyMap;

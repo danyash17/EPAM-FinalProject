@@ -2,10 +2,10 @@ package com.epam.web.service;
 
 import com.epam.web.dao.ApplicationDao;
 import com.epam.web.dao.DaoException;
-import com.epam.web.dao.DaoHelper;
-import com.epam.web.dao.DaoHelperFactory;
+import com.epam.web.dao.helper.DaoHelper;
+import com.epam.web.dao.helper.DaoHelperFactory;
 import com.epam.web.entity.Application;
-import com.epam.web.entity.SexEnum;
+import com.epam.web.entity.enums.SexEnum;
 
 import static org.junit.Assert.*;
 

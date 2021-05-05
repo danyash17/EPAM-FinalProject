@@ -3,7 +3,7 @@ package com.epam.web.command;
 import com.epam.web.comparator.ApplicationComparator;
 import com.epam.web.entity.Application;
 import com.epam.web.entity.Specialization;
-import com.epam.web.entity.UserRole;
+import com.epam.web.entity.enums.UserRole;
 import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
@@ -29,24 +29,25 @@ public class LoadAccountDataCommand implements Command {
         this.specializationService = specializationService;
         this.loadAtPage = loadAtPage;
     }
+
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
-        Integer id= (Integer) request.getSession().getAttribute("id");
-        UserRole role= (UserRole) request.getSession().getAttribute("role");
+        Integer id = (Integer) request.getSession().getAttribute("id");
+        UserRole role = (UserRole) request.getSession().getAttribute("role");
         Optional<Application> application = applicationService.getApplication(id);
-        Optional<Specialization> specialization=Optional.empty();
-        if (application.isPresent()){
-            specialization=specializationService.getSpecialization(application.get().getSpecializationId());
+        Optional<Specialization> specialization = Optional.empty();
+        if (application.isPresent()) {
+            specialization = specializationService.getSpecialization(application.get().getSpecializationId());
         }
-        if(role.name().toUpperCase().equals("ADMIN")) {
-            return CommandResult.forward("/controller?command=accountPage");
+        if (role.name().toUpperCase().equals("ADMIN")) {
+            return CommandResult.forward("/controller?command=" + loadAtPage);
         }
         if (specialization.isPresent()) {
-            List<Application> competitionParticipants=applicationService.getFullSpecifiedApplicationList(specialization.get().getId());
-            Collections.sort(competitionParticipants,comparator);
+            List<Application> competitionParticipants = applicationService.getFullSpecifiedApplicationList(specialization.get().getId());
+            Collections.sort(competitionParticipants, comparator);
             Collections.reverse(competitionParticipants);
             Application presentApplication = application.get();
-            Specialization presentSpecialization=specialization.get();
+            Specialization presentSpecialization = specialization.get();
             request.getSession().setAttribute("country", presentApplication.getCountry());
             request.getSession().setAttribute("city", presentApplication.getCity());
             request.getSession().setAttribute("medal", presentApplication.getMedal());
@@ -56,12 +57,11 @@ public class LoadAccountDataCommand implements Command {
             request.getSession().setAttribute("second_exam", presentApplication.getSecondExam());
             request.getSession().setAttribute("third_exam", presentApplication.getThirdExam());
             request.getSession().setAttribute("grade", presentApplication.getGrade());
-            request.getSession().setAttribute("listPosition",competitionParticipants.indexOf(presentApplication));
-            request.getSession().setAttribute("competitionParticipants",competitionParticipants.size());
-            request.getSession().setAttribute("specializationPlan",specialization.get().getPlan());
-            return CommandResult.forward("/controller?command="+loadAtPage);
-        }
-        else {
+            request.getSession().setAttribute("listPosition", competitionParticipants.indexOf(presentApplication));
+            request.getSession().setAttribute("competitionParticipants", competitionParticipants.size());
+            request.getSession().setAttribute("specializationPlan", specialization.get().getPlan());
+            return CommandResult.forward("/controller?command=" + loadAtPage);
+        } else {
             LOGGER.warn("Account data error");
             request.getSession().setAttribute("errorMessage", "Account data error");
             return CommandResult.redirect("/controller?command=errorPage");

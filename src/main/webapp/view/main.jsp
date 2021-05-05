@@ -6,7 +6,7 @@
 <fmt:setBundle basename="local"/>
 <html lang="${sessionScope.lang}">
 <head>
-    <title>EPAM Faculties</title>
+    <title>EPAM</title>
     <link rel="stylesheet" href="../../static/pagestyle.css">
     <link rel="shortcut icon" type="image/png" href="images/favicon.png">
 </head>

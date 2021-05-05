@@ -20,13 +20,17 @@
         <input type="hidden" name="command" value="loadAdminAccount">
         <input type=hidden name="page" value="${param.page-1}"/>
         <input type=hidden name="facultiesPerPage" value="${param.facultiesPerPage}"/>
-        <c:if test="${param.page>1}"><button class="button-round"><</button></c:if>
+        <c:if test="${param.page>1}">
+            <button class="button-round"><</button>
+        </c:if>
     </form>
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="loadAdminAccount">
         <input type=hidden name="page" value="${param.page+1}"/>
         <input type=hidden name="facultiesPerPage" value="${param.facultiesPerPage}"/>
-        <c:if test="${hasNext}"><button class="button-round">></button></c:if>
+        <c:if test="${hasNext}">
+            <button class="button-round">></button>
+        </c:if>
     </form>
 </section>
 </body>

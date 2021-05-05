@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="header">
-<fmt:message key="local.index.universityheader"/>
+    <fmt:message key="local.index.universityheader"/>
 </div>
 </body>
 </html>

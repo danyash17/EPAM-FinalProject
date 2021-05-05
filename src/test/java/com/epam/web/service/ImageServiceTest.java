@@ -1,7 +1,8 @@
 package com.epam.web.service;
 
 import com.epam.web.dao.*;
-import com.epam.web.entity.Faculty;
+import com.epam.web.dao.helper.DaoHelper;
+import com.epam.web.dao.helper.DaoHelperFactory;
 
 import static org.junit.Assert.*;
 

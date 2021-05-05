@@ -26,7 +26,7 @@ public class UserServiceTest {
     private final UserDao DAO = Mockito.mock(UserDao.class);
     private final UserService SERVICE = new UserService(FACTORY);
     @Test
-    public void testLogin() throws Exception, ServiceException {
+    public void testLogin() throws ServiceException, DaoException {
         //given
         when(FACTORY.create()).thenReturn(DAO_HELPER);
         when(DAO_HELPER.createUserDao()).thenReturn(DAO);

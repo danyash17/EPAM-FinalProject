@@ -34,7 +34,7 @@
                     <br/>
                     <q>${specialization.key.description}</q>
                     <c:if test="${role=='ENROLEE'}">
-                        <form action="${pageContext.request.contextPath}/controller" >
+                        <form action="${pageContext.request.contextPath}/controller" method="post">
                             <c:set var="specId" value="${specialization.key.id}"/>
                             <input type="hidden" name="command" value="register">
                             <input type="hidden" name="registrationId" value="${specId}" >
@@ -44,7 +44,7 @@
                         </form>
                     </c:if>
                     <c:if test="${role=='ADMIN'}">
-                        <form action="${pageContext.request.contextPath}/controller" >
+                        <form action="${pageContext.request.contextPath}/controller" method="post">
                             <input type="hidden" name="command" value="report">
                             <input type="hidden" name="page" value="1">
                             <input type="hidden" name="applicantsPerPage" value="5">

@@ -27,7 +27,7 @@ public class LoadFacultiesCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         int page = Integer.parseInt(request.getParameter("page"));
         int total = Integer.parseInt(request.getParameter("facultiesPerPage"));
         List<Faculty> facultyList = facultyService.getLimitedFaculties((page - 1) * total, total);
@@ -43,7 +43,7 @@ public class LoadFacultiesCommand implements Command {
         request.getSession().setAttribute("facultyMap", facultyMap);
         return CommandResult.forward("/controller?command="+loadAtPage+"&page=" + page);
     }
-    private LinkedHashMap<Faculty,FacultyImage> getMap(List<Faculty> facultyList,List<FacultyImage> imageList) throws Exception, ServiceException {
+    private LinkedHashMap<Faculty,FacultyImage> getMap(List<Faculty> facultyList,List<FacultyImage> imageList) throws ServiceException {
         LinkedHashMap<Faculty,FacultyImage> facultyMap=new LinkedHashMap<>();
         if(!imageList.isEmpty()) {
             for (int i = 0; i < facultyList.size(); i++) {

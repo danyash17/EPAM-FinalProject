@@ -16,9 +16,13 @@ public class DaoHelper implements AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
-        connection.setAutoCommit(true);
-        connection.close();
+    public void close(){
+        try {
+            connection.setAutoCommit(true);
+            connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public UserDao createUserDao() {

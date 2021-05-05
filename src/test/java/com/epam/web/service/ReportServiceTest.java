@@ -33,7 +33,7 @@ public class ReportServiceTest {
     private final int PLAN = 1;
 
     @Test
-    public void testCompetition() throws Exception, ServiceException {
+    public void testCompetition() {
         //given
         ReportService service = new ReportService();
         //when

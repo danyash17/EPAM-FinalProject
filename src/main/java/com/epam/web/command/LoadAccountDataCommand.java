@@ -30,7 +30,7 @@ public class LoadAccountDataCommand implements Command {
         this.loadAtPage = loadAtPage;
     }
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         Integer id= (Integer) request.getSession().getAttribute("id");
         UserRole role= (UserRole) request.getSession().getAttribute("role");
         Optional<Application> application = applicationService.getApplication(id);

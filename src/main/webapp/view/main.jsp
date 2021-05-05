@@ -19,7 +19,7 @@
         <table class="pagination-table">
             <tr>
                 <th colspan="3">
-                    <form action="${pageContext.request.contextPath}/controller">
+                    <form action="${pageContext.request.contextPath}/controller" method="post">
                         <input type="hidden" name="command" value="loadFaculty">
                         <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
                         <input type="hidden" name="page" value="1">

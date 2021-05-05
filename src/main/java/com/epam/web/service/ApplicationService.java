@@ -16,7 +16,7 @@ public class ApplicationService {
         this.factory = daoHelper;
     }
 
-    public Optional<Application> getApplication(Integer id) throws ServiceException, Exception {
+    public Optional<Application> getApplication(Integer id) throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.selectExtendedApplicationById(id);
@@ -26,7 +26,7 @@ public class ApplicationService {
         }
     }
 
-    public void updateSpecialization(Integer id, Integer specializationId) throws Exception, ServiceException {
+    public void updateSpecialization(Integer id, Integer specializationId) throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             dao.updateSpecializationColumnById(id,specializationId);
@@ -36,7 +36,7 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getApplicationList() throws Exception, ServiceException {
+    public List<Application> getApplicationList() throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.findAll();
@@ -46,7 +46,7 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getLimitedSpecifiedApplicationList(Integer specializationId, int page, int total) throws Exception, ServiceException {
+    public List<Application> getLimitedSpecifiedApplicationList(Integer specializationId, int page, int total) throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.selectLimitedSpecifiedApplicationListBySpecificationId(specializationId,page,total);
@@ -56,7 +56,7 @@ public class ApplicationService {
         }
     }
 
-    public void updateStatus(Integer applicationId, Boolean result) throws Exception, ServiceException {
+    public void updateStatus(Integer applicationId, Boolean result) throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             dao.updateSpecializationReportResultById(applicationId,result);
@@ -66,7 +66,7 @@ public class ApplicationService {
         }
     }
 
-    public List<Application> getFullSpecifiedApplicationList(int specializationId) throws Exception, ServiceException {
+    public List<Application> getFullSpecifiedApplicationList(int specializationId) throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             ApplicationDao dao=daoHelper.createApplicationDao();
             return dao.selectSpecifiedApplicationListBySpecificationId(specializationId);

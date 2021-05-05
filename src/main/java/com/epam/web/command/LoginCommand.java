@@ -22,7 +22,7 @@ public class LoginCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         if(!validator.validate(login)||!validator.validate(password)){

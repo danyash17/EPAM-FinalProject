@@ -7,7 +7,7 @@ import com.epam.web.entity.Application;
 import java.util.*;
 
 public class ReportService {
-    public Optional<ReportDto> doCompetition(List<Application> applicationList, int plan, int page, int total, ApplicationComparator comparator) throws Exception, ServiceException {
+    public Optional<ReportDto> doCompetition(List<Application> applicationList, int plan, int page, int total, ApplicationComparator comparator) {
         if (!applicationList.isEmpty()) {
             Collections.sort(applicationList, comparator);
             Collections.reverse(applicationList);

@@ -23,7 +23,7 @@ public class ImageServiceTest {
     private final ImageDao<FacultyImage> DAO = Mockito.mock(ImageDao.class);
     private final ImageService SERVICE = new ImageService(FACTORY);
     @Test
-    public void getLimitedFacultyImages() throws Exception, ServiceException {
+    public void getLimitedFacultyImages() throws ServiceException, DaoException {
         //given
         when(FACTORY.create()).thenReturn(DAO_HELPER);
         when(DAO_HELPER.createFacultyImageDao()).thenReturn(DAO);

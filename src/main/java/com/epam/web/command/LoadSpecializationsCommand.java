@@ -30,7 +30,7 @@ public class LoadSpecializationsCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         int facultyId = Integer.parseInt(request.getParameter("currentFaculty"));
         int page = Integer.parseInt(request.getParameter("page"));
         int total = Integer.parseInt(request.getParameter("specializationsPerPage"));
@@ -65,7 +65,7 @@ public class LoadSpecializationsCommand implements Command {
         return CommandResult.forward("/controller?command=facultyPage&page=" + page);
     }
 
-    private LinkedHashMap<Specialization, SpecializationImage> getMap(List<Specialization> specializationList, List<SpecializationImage> imageList) throws Exception, ServiceException {
+    private LinkedHashMap<Specialization, SpecializationImage> getMap(List<Specialization> specializationList, List<SpecializationImage> imageList) throws ServiceException {
         LinkedHashMap<Specialization, SpecializationImage> specializationMap = new LinkedHashMap<>();
         if (!imageList.isEmpty()) {
             for (int i = 0; i < specializationList.size(); i++) {
@@ -99,7 +99,7 @@ public class LoadSpecializationsCommand implements Command {
         return specializationMap;
     }
 
-    private FacultyImage getFacultyImage(Faculty faculty) throws ServiceException, Exception {
+    private FacultyImage getFacultyImage(Faculty faculty) throws ServiceException {
         List<FacultyImage> facultyImageList = imageService.getFacultyImages();
         FacultyImage image = null;
         int id = faculty.getId();

@@ -56,7 +56,7 @@
         <div class="spec-row">
             <c:forEach items="${facultyMap}" var="faculty">
             <div class="spec-column">
-                <form action="${pageContext.request.contextPath}/controller">
+                <form action="${pageContext.request.contextPath}/controller" method="post">
                     <input type="hidden" name="command" value="loadFaculty">
                     <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
                     <input type="hidden" name="page" value="1">

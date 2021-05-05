@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LogoutCommand implements Command {
     public static final String LOGIN_PAGE = "?command=loginPage";
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         request.getSession().invalidate();
         return CommandResult.redirect(request.getRequestURI() + LOGIN_PAGE);
     }

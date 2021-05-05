@@ -25,7 +25,7 @@ public class Controller extends HttpServlet {
         RequestDispatcher dispatcher=getServletContext().getRequestDispatcher(page);
         dispatcher.forward(request,response);
     }
-    private void redirect(HttpServletRequest request,HttpServletResponse response,String page) throws ServletException, IOException {
+    private void redirect(HttpServletRequest request,HttpServletResponse response,String page) throws IOException {
         response.sendRedirect(request.getContextPath()+page);
     }
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -38,7 +38,7 @@ public class Controller extends HttpServlet {
         page=result.getPage();
         isRedirect=result.isRedirect();
         }
-        catch (Exception | ServiceException e){
+        catch (ServiceException e){
             request.setAttribute("errorMessage","Something went wrong");
             page="/view/error.jsp";
         }

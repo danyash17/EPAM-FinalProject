@@ -29,7 +29,7 @@ public class FormSpecializationReportCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         int specializationId = Integer.parseInt(request.getParameter("reportingSpecializationId"));
         int page = Integer.parseInt(request.getParameter("page"));
         int total = Integer.parseInt(request.getParameter("applicantsPerPage"));
@@ -51,7 +51,7 @@ public class FormSpecializationReportCommand implements Command {
             fullAppliedEnrolees.get().getApplicationMap().forEach((key, value)-> {
                 try {
                     applicationService.updateStatus(key.getId(),value);
-                } catch (Exception | ServiceException e) {
+                } catch (ServiceException e) {
                     e.printStackTrace();
                 }
             });

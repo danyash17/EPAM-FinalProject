@@ -29,7 +29,7 @@ public class UpdateSpecializationCommand implements Command {
     }
 
     @Override
-    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException, Exception {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException{
         Integer previousSpecializationId=(Integer) request.getSession().getAttribute("specialization_id");
         Integer newSpecializationId = Integer.parseInt(request.getParameter("registrationId"));
         Integer id = (Integer) request.getSession().getAttribute("id");
@@ -51,13 +51,13 @@ public class UpdateSpecializationCommand implements Command {
         update(newSpecializationId,planForNewSpecialization);
         return CommandResult.forward("/controller?command=accountData");
     }
-    private void update(Integer specializationId,Integer plan) throws Exception, ServiceException {
+    private void update(Integer specializationId,Integer plan) throws ServiceException {
         List<Application> fullList=applicationService.getFullSpecifiedApplicationList(specializationId);
         Optional<ReportDto> fullAppliedEnrolees=reportService.doCompetition(fullList,plan,0, fullList.size(),new ApplicationComparator());
         fullAppliedEnrolees.get().getApplicationMap().forEach((key, value)-> {
             try {
                 applicationService.updateStatus(key.getId(),value);
-            } catch (Exception | ServiceException e) {
+            } catch (ServiceException e) {
                 e.printStackTrace();
             }
         });

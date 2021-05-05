@@ -17,7 +17,7 @@ public class ImageService{
         this.factory = factory;
     }
 
-    public List<FacultyImage> getFacultyImages() throws ServiceException, Exception {
+    public List<FacultyImage> getFacultyImages() throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<FacultyImage> dao = daoHelper.createFacultyImageDao();
             return dao.selectFacultyImages();
@@ -25,7 +25,7 @@ public class ImageService{
             throw new ServiceException(e, e.getMessage());
         }
     }
-    public List<SpecializationImage> getSpecializationImages(Integer facultyId) throws ServiceException, Exception {
+    public List<SpecializationImage> getSpecializationImages(Integer facultyId) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();
             return dao.selectSpecializationImagesById(facultyId);
@@ -34,7 +34,7 @@ public class ImageService{
         }
     }
 
-    public Optional<FacultyImage> getFacultyImage(Integer id) throws Exception, ServiceException {
+    public Optional<FacultyImage> getFacultyImage(Integer id) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<FacultyImage> dao = daoHelper.createFacultyImageDao();
             return dao.selectSingleImage(id);
@@ -42,7 +42,7 @@ public class ImageService{
             throw new ServiceException(e, e.getMessage());
         }
     }
-    public Optional<SpecializationImage> getSpecializationImage(Integer id) throws Exception, ServiceException {
+    public Optional<SpecializationImage> getSpecializationImage(Integer id) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             ImageDao<SpecializationImage> dao = daoHelper.createSpecializationImageDao();
             return dao.selectSingleImage(id);

@@ -16,7 +16,7 @@ public class SpecializationService  {
         this.factory = factory;
     }
 
-    public Optional<Specialization> getSpecialization(Integer specializationId) throws Exception, ServiceException {
+    public Optional<Specialization> getSpecialization(Integer specializationId) throws ServiceException {
         try(DaoHelper daoHelper=factory.create()){
             SpecializationDao dao=daoHelper.createSpecializationDao();
             return dao.selectSpecialization(specializationId);
@@ -26,7 +26,7 @@ public class SpecializationService  {
         }
     }
 
-    public List<Specialization> getLimitedSpecializations(Integer facultyId,int pageid, int total) throws Exception, ServiceException {
+    public List<Specialization> getLimitedSpecializations(Integer facultyId,int pageid, int total) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             SpecializationDao dao = daoHelper.createSpecializationDao();
             return dao.selectLimitedSpecializations(facultyId,pageid, total);

@@ -1,10 +1,7 @@
 package com.epam.web.service;
 
 
-import com.epam.web.dao.DaoHelper;
-import com.epam.web.dao.DaoHelperFactory;
-import com.epam.web.dao.FacultyDao;
-import com.epam.web.dao.SpecializationDao;
+import com.epam.web.dao.*;
 import com.epam.web.entity.Faculty;
 
 import static org.junit.Assert.*;
@@ -30,7 +27,7 @@ public class SpecializationServiceTest {
 
 
     @Test
-    public void testReturnNotNullSpecialization() throws Exception, ServiceException {
+    public void testReturnNotNullSpecialization() throws ServiceException, DaoException {
         //given
         when(FACTORY.create()).thenReturn(DAO_HELPER);
         when(DAO_HELPER.createSpecializationDao()).thenReturn(DAO);
@@ -42,7 +39,7 @@ public class SpecializationServiceTest {
     }
 
     @Test
-    public void testReturnNotNullSpecializationList() throws Exception, ServiceException {
+    public void testReturnNotNullSpecializationList() throws ServiceException, DaoException {
         //given
         when(FACTORY.create()).thenReturn(DAO_HELPER);
         when(DAO_HELPER.createSpecializationDao()).thenReturn(DAO);

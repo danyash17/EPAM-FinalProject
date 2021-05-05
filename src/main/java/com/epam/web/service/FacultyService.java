@@ -16,7 +16,7 @@ public class FacultyService {
         this.factory = factory;
     }
 
-    public List<Faculty> getLimitedFaculties(int pageid, int total) throws ServiceException, Exception {
+    public List<Faculty> getLimitedFaculties(int pageid, int total) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             FacultyDao dao = daoHelper.createFacultyDao();
             return dao.selectLimitedFaculties(pageid, total);
@@ -25,7 +25,7 @@ public class FacultyService {
         }
     }
 
-    public Optional<Faculty> getFaculty(Integer facultyId) throws Exception, ServiceException {
+    public Optional<Faculty> getFaculty(Integer facultyId) throws ServiceException {
         try (DaoHelper daoHelper = factory.create()) {
             FacultyDao dao = daoHelper.createFacultyDao();
             return dao.selectFacultyById(facultyId);

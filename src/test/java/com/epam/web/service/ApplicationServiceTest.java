@@ -1,6 +1,7 @@
 package com.epam.web.service;
 
 import com.epam.web.dao.ApplicationDao;
+import com.epam.web.dao.DaoException;
 import com.epam.web.dao.DaoHelper;
 import com.epam.web.dao.DaoHelperFactory;
 import com.epam.web.entity.Application;
@@ -28,7 +29,7 @@ public class ApplicationServiceTest {
 
 
     @Test
-    public void testReturnNotNullApplication() throws Exception, ServiceException {
+    public void testReturnNotNullApplication() throws ServiceException, DaoException {
         //given
         when(FACTORY.create()).thenReturn(DAO_HELPER);
         when(DAO_HELPER.createApplicationDao()).thenReturn(DAO);
@@ -40,7 +41,7 @@ public class ApplicationServiceTest {
     }
 
     @Test
-    public void testReturnNotNullApplicationList() throws Exception, ServiceException {
+    public void testReturnNotNullApplicationList() throws ServiceException, DaoException {
         //given
         when(FACTORY.create()).thenReturn(DAO_HELPER);
         when(DAO_HELPER.createApplicationDao()).thenReturn(DAO);

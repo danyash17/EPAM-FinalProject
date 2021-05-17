@@ -6,8 +6,8 @@ import com.epam.web.comparator.ApplicationComparator;
 import com.epam.web.dao.helper.DaoHelperFactory;
 import com.epam.web.service.*;
 import com.epam.web.validator.AuthentificationValidator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 public class CommandFactory {
     private final Logger LOGGER = LogManager.getLogger(CommandFactory.class);

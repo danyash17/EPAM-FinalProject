@@ -7,8 +7,8 @@ import com.epam.web.entity.enums.UserRole;
 import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

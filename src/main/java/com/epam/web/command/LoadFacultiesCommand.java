@@ -5,8 +5,8 @@ import com.epam.web.entity.image.FacultyImage;
 import com.epam.web.service.FacultyService;
 import com.epam.web.service.ImageService;
 import com.epam.web.service.ServiceException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,8 +39,8 @@ public class LoadFacultiesCommand implements Command {
             request.getSession().setAttribute("reportMessage", "Images error");
             return CommandResult.forward("/controller?command=errorPage");
         }
-        request.getSession().setAttribute("hasNext", !nextFacultyList.isEmpty());
-        request.getSession().setAttribute("facultyMap", facultyMap);
+        request.setAttribute("hasNext", !nextFacultyList.isEmpty());
+        request.setAttribute("facultyMap", facultyMap);
         return CommandResult.forward("/controller?command=" + loadAtPage + "&page=" + page);
     }
 

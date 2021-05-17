@@ -8,8 +8,9 @@ import com.epam.web.service.FacultyService;
 import com.epam.web.service.ImageService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -58,10 +59,10 @@ public class LoadSpecializationsCommand implements Command {
                 return CommandResult.forward("/controller?command=errorPage");
             }
         }
-        request.getSession().setAttribute("selectedFaculty", faculty);
-        request.getSession().setAttribute("selectedFacultyImage", facultyImage);
-        request.getSession().setAttribute("hasNext", !nextSpecializationList.isEmpty());
-        request.getSession().setAttribute("specializationMap", specializationMap);
+        request.setAttribute("selectedFaculty", faculty);
+        request.setAttribute("selectedFacultyImage", facultyImage);
+        request.setAttribute("hasNext", !nextSpecializationList.isEmpty());
+        request.setAttribute("specializationMap", specializationMap);
         return CommandResult.forward("/controller?command=facultyPage&page=" + page);
     }
 

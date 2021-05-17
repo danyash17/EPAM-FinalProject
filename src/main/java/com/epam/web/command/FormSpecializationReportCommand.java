@@ -8,8 +8,8 @@ import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ReportService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -56,12 +56,12 @@ public class FormSpecializationReportCommand implements Command {
             });
             request.setAttribute("specializationName", specialization.get().getSpecialization());
             request.setAttribute("reportIsFormed", true);
-            request.getSession().setAttribute("hasNext", !nextApplicationsList.isEmpty());
+            request.setAttribute("hasNext", !nextApplicationsList.isEmpty());
             request.setAttribute("appliedEnroleesMap", appliedEnrolees.get().getApplicationMap());
             return CommandResult.forward("/controller?command=reportPage");
         } else {
             LOGGER.info("Empty specialization");
-            request.getSession().setAttribute("reportMessage", "This specialization\n has no registered enrolees yet!");
+            request.setAttribute("reportMessage", "This specialization\n has no registered enrolees yet!");
             return CommandResult.forward("/controller?command=reportPage");
         }
     }

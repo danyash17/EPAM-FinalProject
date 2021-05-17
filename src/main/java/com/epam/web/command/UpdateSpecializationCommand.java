@@ -8,8 +8,8 @@ import com.epam.web.service.ApplicationService;
 import com.epam.web.service.ReportService;
 import com.epam.web.service.ServiceException;
 import com.epam.web.service.SpecializationService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,6 +48,9 @@ public class UpdateSpecializationCommand implements Command {
         }
         update(previousSpecializationId, planForPreviousSpecialization);
         update(newSpecializationId, planForNewSpecialization);
+        LOGGER.info("User " + request.getSession().getAttribute("name") +" "+ request.getSession().getAttribute("surname") +
+                " changed specialization from " + previousSpecialization.get().getSpecialization() + " to "
+                + newSpecialization.get().getSpecialization());
         return CommandResult.forward("/controller?command=accountData");
     }
 

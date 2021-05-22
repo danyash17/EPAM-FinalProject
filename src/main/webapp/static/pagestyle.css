@@ -1,0 +1,467 @@
+/*index.jsp*/
+.index-body {
+    background-color: #77ced9;
+}
+
+div.index-login-form {
+    display: block;
+    text-align: center;
+}
+
+.index-login-form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.index-main {
+    padding: 50px;
+}
+
+input {
+    margin: 10px;
+    padding: 5px;
+}
+
+input[type=text], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    background-color: #63acb5;
+    font-size: 40px;
+    font-family: AG_Futura;
+    text-align: center;
+    /*-webkit-text-stroke: 1px white;*/
+}
+
+.index-error {
+    font-family: AG_Futura;
+    text-align: center;
+}
+
+.button {
+    font-family: AG_Futura;
+    background-color: #2ea832;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.button:hover {
+    opacity: 1
+}
+
+.button-round {
+    font-family: AG_Futura;
+    background-color: #2ea832;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.8;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.disabled-button {
+    font-family: AG_Futura;
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 1;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.button-round:hover {
+    opacity: 1
+}
+
+.button-round-disabled {
+    font-family: AG_Futura;
+    background-color: #2ea832;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    cursor: not-allowed;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/*top-nav.jsp*/
+.top {
+    background-color: #63acb5;
+    overflow: hidden;
+}
+
+.top a {
+    font-family: AG_Futura;
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 19px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.top a:hover {
+    background-color: #ddd;
+    color: #63acb5;
+}
+
+.top a.active {
+    float: right;
+    font-family: AG_Futura;
+    background-color: #2ea832;
+    color: white;
+}
+
+.dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    text-align: center;
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: #f2f2f2;
+    padding: 19px 16px;
+    background-color: #63acb5;
+    font-family: AG_Futura;
+}
+
+.dropdown .dropbtn:hover {
+    background-color: #ddd;
+    color: #63acb5;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+    color: #63acb5;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/*main.jsp*/
+.main-hello {
+    font-family: AG_Futura;
+    margin: 12px;
+    font-size: 24px;
+    float: left;
+    color: white;
+}
+
+.common-body {
+    height: auto;
+    width: auto;
+    background-color: #77ced9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.col-3 {
+    height: 400px;
+    width: 33.333%;
+    margin: 0.5rem;
+    background: white;
+    border-style: solid;
+}
+
+.row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.main-faculties {
+    margin: 30px;
+    font-size: 40px;
+    font-family: AG_Futura;
+    text-align: center;
+}
+
+.main-table {
+    margin: 30px;
+    font-family: AG_Futura;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    height: 0;
+    justify-content: space-between;
+}
+
+.pagination-table {
+    padding: 10px;
+    margin-bottom: 6px;
+    background: white;
+    width: 33%;
+    border-spacing: 0;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.main-threefacs {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.dev-image {
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.qa-image {
+    margin: 10px;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.smm-image {
+    margin: 10px;
+    height: 100%;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*spec*/
+.spec-header {
+    font-size: 42px;
+    font-family: AG_Futura;
+    color: white;
+    margin: 10px;
+    display: flex;
+}
+
+.spec-description {
+    font-size: 30px;
+    font-family: AG_Futura;
+}
+
+.spec-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.spec-column {
+    font-size: 30px;
+    font-family: AG_Futura;
+    color: black;
+    text-align: center;
+}
+
+.spec-description {
+    text-align: center;
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+}
+
+.account-info-application {
+    text-align: left;
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+    width: 50%;
+}
+
+.account-info-grades {
+    text-align: right;
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+    width: 50%;
+}
+
+.account-info-position {
+    padding: 10px;
+    margin-bottom: 6px;
+    background: white;
+    border-spacing: 0;
+    border-radius: 20px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    font-size: 19px;
+    font-family: AG_Futura;
+    color: black;
+}
+
+.participation-winning {
+    font-size: 23px;
+    color: #2ea832;
+}
+
+.participation-loosing {
+    font-size: 23px;
+    color: red;
+}
+
+.participation-amount {
+    font-size: 23px;
+}
+
+.account-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.rolling-text {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+
+.rolling-text span {
+    text-transform: uppercase;
+    display: block;
+}
+
+.textUpper {
+    background-color: #77ced9;
+    font-size: 23px;
+    font-family: AG_Futura;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    position: relative;
+    animation: text 3s 1;
+    color: white;
+}
+
+.textDown {
+    font-size: 14px;
+    font-family: AG_Futura;
+    color: black;
+}
+
+@keyframes text {
+    0% {
+        margin-bottom: -20px;
+    }
+    30% {
+        letter-spacing: 12px;
+        margin-bottom: -20px;
+    }
+    85% {
+        letter-spacing: 3px;
+        margin-bottom: -20px;
+    }
+}
+
+.report-table {
+    color: black;
+    font-size: 23px;
+    font-family: AG_Futura;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.report-denied {
+    color: white;
+    background-color: red;
+}
+
+.report-applied {
+    color: white;
+    background-color: green;
+}
+
+.report-message {
+    text-align: center;
+    font-size: 23px;
+    font-family: AG_Futura;
+    color: red;
+}
+
+.pagination {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}

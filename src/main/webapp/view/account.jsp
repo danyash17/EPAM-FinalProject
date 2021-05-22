@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="WEB-INF/customtag.tld" prefix="ctl" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="local"/>
 <html>
@@ -37,15 +38,9 @@
     <b style="color: white"><fmt:message
             key="local.account.enrolee.info.totalgrade"/>:</b> ${grade+first_exam+second_exam+third_exam}
 </pre>
-    <c:if test="${(listPosition+1)<=specializationPlan}">
-        <c:set var="participation" value="participation-winning"/>
-    </c:if>
-    <c:if test="${(listPosition+1)>specializationPlan}">
-        <c:set var="participation" value="participation-loosing"/>
-    </c:if>
-    <div class="account-info-position">You are currently at <b class="${participation}">${listPosition+1}</b> position
-        of <b class="participation-amount">${competitionParticipants}</b>
-        of ${specialization} specialization(Plan - <b class="participation-amount">${specializationPlan}</b>)
+    <div class="account-info-position">
+        <ctl:competition specialization="${specialization}" competitionParticipants="${competitionParticipants}"
+                         listPosition="${listPosition}" specializationPlan="${specializationPlan}"/>
     </div>
     </c:if>
     <c:if test="${role=='ADMIN'}">

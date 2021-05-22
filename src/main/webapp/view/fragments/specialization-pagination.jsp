@@ -20,7 +20,7 @@
         <input type="hidden" name="command" value="loadFaculty">
         <input type="hidden" name="page" value="${param.page-1}">
         <input type="hidden" name="currentFaculty" value="${param.currentFaculty}">
-        <input type="hidden" name="specializationsPerPage" value="${param.specializationsPerPage}">
+        <input type="hidden" name="elementsPerPage" value="${param.elementsPerPage}">
         <c:if test="${param.page>1}">
             <button class="button-round"><</button>
         </c:if>
@@ -29,7 +29,7 @@
         <input type="hidden" name="command" value="loadFaculty">
         <input type="hidden" name="page" value="${param.page+1}">
         <input type="hidden" name="currentFaculty" value="${param.currentFaculty}">
-        <input type="hidden" name="specializationsPerPage" value="${param.specializationsPerPage}">
+        <input type="hidden" name="elementsPerPage" value="${param.elementsPerPage}">
         <c:if test="${hasNext}">
             <button class="button-round">></button>
         </c:if>

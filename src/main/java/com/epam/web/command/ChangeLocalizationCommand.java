@@ -9,7 +9,8 @@ public class ChangeLocalizationCommand implements Command {
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         String language = request.getParameter("sessionLocale");
+        String page = (String) request.getSession().getAttribute("currentPage");
         request.getSession().setAttribute("lang", language);
-        return CommandResult.redirect("/controller?command=loadMain&page=1&facultiesPerPage=3");
+        return CommandResult.forward(page);
     }
 }

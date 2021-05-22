@@ -35,7 +35,7 @@
     <a href="${pageContext.request.contextPath}/controller?command=aboutPage"><fmt:message
             key="local.navbar.about"/></a>
     <c:if test="${role=='ADMIN'}">
-        <c:set var="facPaginate" value="&page=1&facultiesPerPage=3"/>
+        <c:set var="facPaginate" value="&page=1&elementsPerPage=3"/>
     </c:if>
     <c:if test="${role=='ENROLEE'}">
         <c:set var="facPaginate" value=""/>
@@ -43,7 +43,7 @@
     <a href="${pageContext.request.contextPath}/controller?command=accountData${facPaginate}"><fmt:message
             key="local.navbar.account"/></a>
     <a class="active"
-       href="${pageContext.request.contextPath}/controller?command=loadMain&page=1&facultiesPerPage=3"><fmt:message
+       href="${pageContext.request.contextPath}/controller?command=loadMain&page=1&elementsPerPage=3"><fmt:message
             key="local.navbar.home"/></a>
 </div>
 </body>

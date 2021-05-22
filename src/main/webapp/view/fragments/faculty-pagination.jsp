@@ -19,7 +19,7 @@
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="loadMain">
         <input type=hidden name="page" value="${param.page-1}"/>
-        <input type=hidden name="facultiesPerPage" value="${param.facultiesPerPage}"/>
+        <input type=hidden name="elementsPerPage" value="${param.elementsPerPage}"/>
         <c:if test="${param.page>1}">
             <button class="button-round"><</button>
         </c:if>
@@ -27,7 +27,7 @@
     <form action="${pageContext.request.contextPath}/controller">
         <input type="hidden" name="command" value="loadMain">
         <input type=hidden name="page" value="${param.page+1}"/>
-        <input type=hidden name="facultiesPerPage" value="${param.facultiesPerPage}"/>
+        <input type=hidden name="elementsPerPage" value="${param.elementsPerPage}"/>
         <c:if test="${hasNext}">
             <button class="button-round">></button>
         </c:if>

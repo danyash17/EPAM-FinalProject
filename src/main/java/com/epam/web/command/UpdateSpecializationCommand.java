@@ -43,7 +43,7 @@ public class UpdateSpecializationCommand implements Command {
             planForPreviousSpecialization = previousSpecialization.get().getPlan();
         } else {
             LOGGER.warn("Specialization is not found in DB");
-            request.getSession().setAttribute("errorMessage", "There is no data about specialization in database");
+            request.setAttribute("errorMessage", "There is no data about specialization in database");
             return CommandResult.redirect("/controller?command=errorPage");
         }
         update(previousSpecializationId, planForPreviousSpecialization);

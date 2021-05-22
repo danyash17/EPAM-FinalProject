@@ -61,15 +61,13 @@
                         <input type="hidden" name="command" value="loadFaculty">
                         <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
                         <input type="hidden" name="page" value="1">
-                        <input type="hidden" name="specializationsPerPage" value="3">
+                        <input type="hidden" name="elementsPerPage" value="3">
                         <button class="button"><fmt:message
                                 key="local.account.admin.report"/> ${faculty.key.faculty}</button>
                     </form>
                 </div>
             </c:forEach>
         </div>
-    </c:if>
-    <c:if test="${role=='ADMIN'}">
         <jsp:include page="fragments/adminpage-pagination.jsp"/>
     </c:if>
 </div>

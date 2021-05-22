@@ -15,7 +15,6 @@
 <div class="main-faculties"><fmt:message key="local.main.faculties"/></div>
 <div class="main-table">
     <c:forEach var="faculty" items="${facultyMap}">
-        <c:set var="currentFaculty" value="${faculty}" scope="session"/>
         <table class="pagination-table">
             <tr>
                 <th colspan="3">
@@ -23,7 +22,7 @@
                         <input type="hidden" name="command" value="loadFaculty">
                         <input type="hidden" name="currentFaculty" value="${faculty.key.facultyId}">
                         <input type="hidden" name="page" value="1">
-                        <input type="hidden" name="specializationsPerPage" value="3">
+                        <input type="hidden" name="elementsPerPage" value="3">
                         <button class="button">${faculty.key.faculty}</button>
                     </form>
                 </th>

@@ -42,7 +42,7 @@ public class LoginCommand implements Command {
             response.addHeader("Pragma", "no -cache");
             response.setDateHeader("Expires", 0);
             LOGGER.info("User " + presentUser.getName() + " " + presentUser.getSurname() + " logged in");
-            return CommandResult.forward("/controller?command=loadMain&page=1&facultiesPerPage=3");
+            return CommandResult.forward("/controller?command=loadMain&page=1&elementsPerPage=3");
         } else {
             LOGGER.warn("User login error");
             request.getSession().setAttribute("errorMessage", "Login or password is incorrect");

@@ -16,13 +16,13 @@ public class Controller extends HttpServlet {
     private final CommandFactory commandFactory = new CommandFactory();
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        process(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        process(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        process(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        process(request, response);
     }
 
     private void forward(HttpServletRequest request, HttpServletResponse response, String page) throws ServletException, IOException {
@@ -43,6 +43,7 @@ public class Controller extends HttpServlet {
             CommandResult result = action.execute(request, response);
             page = result.getPage();
             isRedirect = result.isRedirect();
+            request.getSession().setAttribute("currentPage", page);
         } catch (ServiceException e) {
             request.setAttribute("errorMessage", "Something went wrong");
             page = "/view/error.jsp";

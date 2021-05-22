@@ -34,7 +34,7 @@ public class LoadSpecializationsCommand implements Command {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) throws ServiceException {
         int facultyId = Integer.parseInt(request.getParameter("currentFaculty"));
         int page = Integer.parseInt(request.getParameter("page"));
-        int total = Integer.parseInt(request.getParameter("specializationsPerPage"));
+        int total = Integer.parseInt(request.getParameter("elementsPerPage"));
         List<Specialization> specializationList = specializationService.getLimitedSpecializations(facultyId, (page - 1) * total, total);
         List<SpecializationImage> imageList = imageService.getSpecializationImages(facultyId);
         LinkedHashMap<Specialization, SpecializationImage> specializationMap = getMap(specializationList, imageList);
@@ -48,7 +48,7 @@ public class LoadSpecializationsCommand implements Command {
         Faculty faculty;
         FacultyImage facultyImage;
         if (!optionalFaculty.isPresent()) {
-            request.getSession().setAttribute("reportMessage", "Faculty not found");
+            request.setAttribute("reportMessage", "Faculty not found");
             return CommandResult.forward("/controller?command=errorPage");
         } else {
             faculty = optionalFaculty.get();
@@ -59,10 +59,10 @@ public class LoadSpecializationsCommand implements Command {
                 return CommandResult.forward("/controller?command=errorPage");
             }
         }
-        request.setAttribute("selectedFaculty", faculty);
-        request.setAttribute("selectedFacultyImage", facultyImage);
-        request.setAttribute("hasNext", !nextSpecializationList.isEmpty());
-        request.setAttribute("specializationMap", specializationMap);
+        request.getSession().setAttribute("selectedFaculty", faculty);
+        request.getSession().setAttribute("selectedFacultyImage", facultyImage);
+        request.getSession().setAttribute("hasNext", !nextSpecializationList.isEmpty());
+        request.getSession().setAttribute("specializationMap", specializationMap);
         return CommandResult.forward("/controller?command=facultyPage&page=" + page);
     }
 

@@ -63,7 +63,7 @@ public class LoadAccountDataCommand implements Command {
             return CommandResult.forward("/controller?command=" + loadAtPage);
         } else {
             LOGGER.warn("Account data error");
-            request.getSession().setAttribute("errorMessage", "Account data error");
+            request.setAttribute("errorMessage", "Account data error");
             return CommandResult.redirect("/controller?command=errorPage");
         }
     }

@@ -1,9 +1,8 @@
 package com.epam.web.connection;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.*;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicReference;
@@ -14,19 +13,17 @@ public class ConnectionPool {
     private static final AtomicReference<ConnectionPool> INSTANCE = new AtomicReference<>();
 
     private static final Lock INSTANCE_LOCK = new ReentrantLock();
+    private static final ConnectionPoolFactory FACTORY = new ConnectionPoolFactory();
 
-    private final Queue<Connection> availableConnections = new ArrayDeque<>();
-    private final Set<Connection> activeConnections = new HashSet<>();
+    private final Queue<Connection> AVAILABLE_CONNECTIONS = new ArrayDeque<>();
+    private final Set<Connection> ACTIVE_CONNECTIONS = new HashSet<>();
 
     private final Lock LOCK = new ReentrantLock();
-    private final Semaphore connectionsSemaphore;
+    private final Semaphore SEMAPHORE;
 
     private static final String PROPERTIES_FILENAME = "database.properties";
 
-    private static String databaseURL;
-    private static String databaseUsername;
-    private static String databasePassword;
-    private static int connectionPoolSize;
+    private static int size;
 
     public static ConnectionPool getInstance() {
 
@@ -35,7 +32,8 @@ public class ConnectionPool {
             try {
                 INSTANCE_LOCK.lock();
                 if (INSTANCE.get() == null) {
-                    ConnectionPool pool = create();
+                    ConnectionPool pool = null;
+                    pool = init();
                     INSTANCE.getAndSet(pool);
                 }
 
@@ -47,65 +45,50 @@ public class ConnectionPool {
         return INSTANCE.get();
     }
 
-    private static ConnectionPool create() {
-        try {
-            init();
-            ConnectionPool connectionPool = new ConnectionPool(connectionPoolSize);
-            initConnections(connectionPool);
+    private static ConnectionPool init() {
+        Properties properties = new Properties();
+        try (InputStream inputStream = ConnectionPool.class.getClassLoader().getResourceAsStream(PROPERTIES_FILENAME)) {
 
-            return connectionPool;
-
-        } catch (IOException | SQLException | ClassNotFoundException e) {
-            throw new ConnectionPoolException("Cannot create pool", e);
+            if (inputStream == null) {
+                throw new IOException("No file found");
+            }
+            properties.load(inputStream);
+        } catch (IOException e) {
+            throw new ConnectionPoolException("Cannot get properties for database", e);
         }
-    }
-
-    private static void init() throws IOException, ClassNotFoundException {
-
-        Properties properties = new PropertiesLoader().loadProperties(PROPERTIES_FILENAME);
-
         String databaseDriver = properties.getProperty("database.driver");
-        Class.forName(databaseDriver);
-
-        databaseURL = properties.getProperty("database.url");
-        databaseUsername = properties.getProperty("database.username");
-        databasePassword = properties.getProperty("database.password");
-
-        connectionPoolSize = Integer.parseInt(properties.getProperty("database.connection.pool_size"));
-    }
-
-    private static void initConnections(ConnectionPool pool) throws SQLException {
-
-        List<Connection> connections = new ArrayList<>();
-
-        for (int i = 0; i < connectionPoolSize; i++) {
-            Connection connection = DriverManager.getConnection(
-                    databaseURL, databaseUsername, databasePassword);
-            connections.add(connection);
+        try {
+            Class.forName(databaseDriver);
+        } catch (ClassNotFoundException e) {
+            throw new ConnectionPoolException("Driver not found", e);
         }
-        pool.initializeConnections(connections);
+        String databaseURL = properties.getProperty("database.url");
+        String databaseUsername = properties.getProperty("database.username");
+        String databasePassword = properties.getProperty("database.password");
+        size = Integer.parseInt(properties.getProperty("database.connection.pool_size"));
+        return FACTORY.create(databaseURL, databaseUsername, databasePassword, size);
     }
 
-    public int getConnectionPoolSize() {
-        return connectionPoolSize;
+    ConnectionPool(int poolSize) {
+        SEMAPHORE = new Semaphore(poolSize);
     }
 
-    private ConnectionPool(int poolSize) {
-        connectionsSemaphore = new Semaphore(poolSize);
+    void addConnections(List<Connection> connections) {
+        AVAILABLE_CONNECTIONS.addAll(connections);
     }
 
-    private void initializeConnections(List<Connection> connections) {
-        availableConnections.addAll(connections);
+    public int getSize() {
+        return size;
     }
 
     public ProxyConnection getConnection() {
 
         try {
-            connectionsSemaphore.acquire();
+            SEMAPHORE.acquire();
             LOCK.lock();
-            Connection connection = availableConnections.poll();
+            Connection connection = AVAILABLE_CONNECTIONS.poll();
             ProxyConnection proxyConnection = new ProxyConnection(connection, this);
-            activeConnections.add(proxyConnection);
+            ACTIVE_CONNECTIONS.add(proxyConnection);
 
             return proxyConnection;
 
@@ -122,10 +105,10 @@ public class ConnectionPool {
         try {
             LOCK.lock();
 
-            if (activeConnections.contains(connection)) {
-                activeConnections.remove(connection);
-                availableConnections.add(connection);
-                connectionsSemaphore.release();
+            if (ACTIVE_CONNECTIONS.contains(connection)) {
+                ACTIVE_CONNECTIONS.remove(connection);
+                AVAILABLE_CONNECTIONS.add(connection);
+                SEMAPHORE.release();
             }
         } finally {
             LOCK.unlock();

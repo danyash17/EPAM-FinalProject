@@ -39,7 +39,7 @@ public class FormSpecializationReportCommand implements Command {
             plan = specialization.get().getPlan();
         } else {
             LOGGER.warn("Specialization is not found in DB");
-            request.getSession().setAttribute("reportMessage", "There is no data about specialization in database");
+            request.setAttribute("reportMessage", "There is no data about specialization in database");
             return CommandResult.forward("/controller?command=reportPage");
         }
         List<Application> fullList = applicationService.getFullSpecifiedApplicationList(specializationId);
@@ -54,10 +54,10 @@ public class FormSpecializationReportCommand implements Command {
                     e.printStackTrace();
                 }
             });
-            request.setAttribute("specializationName", specialization.get().getSpecialization());
-            request.setAttribute("reportIsFormed", true);
-            request.setAttribute("hasNext", !nextApplicationsList.isEmpty());
-            request.setAttribute("appliedEnroleesMap", appliedEnrolees.get().getApplicationMap());
+            request.getSession().setAttribute("specializationName", specialization.get().getSpecialization());
+            request.getSession().setAttribute("reportIsFormed", true);
+            request.getSession().setAttribute("hasNext", !nextApplicationsList.isEmpty());
+            request.getSession().setAttribute("appliedEnroleesMap", appliedEnrolees.get().getApplicationMap());
             return CommandResult.forward("/controller?command=reportPage");
         } else {
             LOGGER.info("Empty specialization");
